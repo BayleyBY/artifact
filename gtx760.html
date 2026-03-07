@@ -29,6 +29,10 @@
     <div class="story-text" id="story-text"></div>
   </section>
 
+  <section class="games">
+    <div id="games-list"></div>
+  </section>
+
   <section class="comparison">
     <div id="comparison-content">
       <div class="comparison-loading">Detecting your device…</div>
@@ -94,6 +98,11 @@ window.CARD_DATA = {
     { label: 'DirectX',      value: 'DirectX 11 / CUDA' },
     { label: 'Performance',  value: '2.26 TFLOPS' },
     { label: 'Power draw',   value: '~170W' },
+  ],
+  games: [
+    { name: 'BioShock Infinite', year: 2013, note: 'Columbia in the clouds — one of the most visually ambitious games ever made' },
+    { name: 'Battlefield 4', year: 2013, note: 'The card this was built for — Frostbite engine, 64-player destruction' },
+    { name: 'Tomb Raider', year: 2013, note: 'The reboot. TressFX hair simulation brought GPUs to their knees' }
   ],
   story: [
     'NVIDIA\'s Kepler architecture changed the conversation. The GTX 760 wasn\'t just a gaming card — it was a CUDA compute device. Researchers started running machine learning experiments on cards like this one. The line between GPU and general-purpose processor began to blur.',

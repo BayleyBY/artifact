@@ -29,6 +29,10 @@
     <div class="story-text" id="story-text"></div>
   </section>
 
+  <section class="games">
+    <div id="games-list"></div>
+  </section>
+
   <section class="comparison">
     <div id="comparison-content">
       <div class="comparison-loading">Detecting your device…</div>
@@ -93,6 +97,11 @@ window.CARD_DATA = {
     { label: 'DirectX',      value: 'DirectX 9' },
     { label: 'Performance',  value: '~25 GFLOPS' },
     { label: 'Power draw',   value: '~40W' },
+  ],
+  games: [
+    { name: 'Counter-Strike 1.6', year: 2003, note: 'The game that defined online multiplayer for a generation' },
+    { name: 'Call of Duty', year: 2003, note: 'The original — a WWII shooter that launched a franchise' },
+    { name: 'Need for Speed: Underground', year: 2003, note: 'Neon lights, tuner culture, and the first taste of DX9 eye candy' }
   ],
   story: [
     'NVIDIA arrived at the DirectX 9 era first — and got it badly wrong. The FX 5600 ran hot, drew too much power for its class, and underdelivered on the programmable shader promises of the new API.',

@@ -29,6 +29,10 @@
     <div class="story-text" id="story-text"></div>
   </section>
 
+  <section class="games">
+    <div id="games-list"></div>
+  </section>
+
   <section class="comparison">
     <div id="comparison-content">
       <div class="comparison-loading">Detecting your device…</div>
@@ -93,6 +97,11 @@ window.CARD_DATA = {
     { label: 'DirectX',      value: 'DirectX 9c / SM 3.0' },
     { label: 'Performance',  value: '~96 GFLOPS' },
     { label: 'Power draw',   value: '~50W' },
+  ],
+  games: [
+    { name: 'The Elder Scrolls IV: Oblivion', year: 2006, note: 'The open world that made every other game feel small' },
+    { name: 'Battlefield 2', year: 2005, note: 'Team-based multiplayer that set the template for a decade of shooters' },
+    { name: 'Company of Heroes', year: 2006, note: 'RTS redefined — dynamic terrain, suppression, and the fog of war' }
   ],
   story: [
     'This card is a trick. Look at the edge connector — it\'s AGP, same slot as the two cards to its left. But inside, this is a PCIe GPU. NVIDIA\'s G70 chip connects to the AGP bus through an internal bridge chip called the HSI.',

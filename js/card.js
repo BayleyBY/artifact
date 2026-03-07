@@ -26,6 +26,17 @@ document.addEventListener('DOMContentLoaded', () => {
       .map(p => `<p>${p}</p>`).join('');
   }
 
+  // ── Render games ─────────────────────────────────────────────────────────
+  const gamesEl = document.getElementById('games-list');
+  if (gamesEl && card.games) {
+    gamesEl.innerHTML = card.games.map(g => `
+      <div class="game-row">
+        <span class="game-name">${g.name}</span>
+        <span class="game-year">${g.year}</span>
+        <span class="game-note">${g.note}</span>
+      </div>`).join('');
+  }
+
   // ── Device detection & comparison ─────────────────────────────────────────
   const compEl = document.getElementById('comparison-content');
   if (!compEl) return;
