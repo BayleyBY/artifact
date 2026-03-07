@@ -31,7 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if (gamesEl && card.games) {
     gamesEl.innerHTML = card.games.map(g => `
       <div class="game-row">
-        <span class="game-name">${g.name}</span>
+        ${g.trailer
+          ? `<a class="game-name game-link" href="${g.trailer}" target="_blank" rel="noopener">${g.name} <span class="game-trailer-icon">▶</span></a>`
+          : `<span class="game-name">${g.name}</span>`}
         <span class="game-year">${g.year}</span>
         <span class="game-note">${g.note}</span>
       </div>`).join('');
