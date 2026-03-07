@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Artifact — Print Labels</title>
+  <style>
+    /* ── Print setup ─────────────────────────────────────── */
+    @page {
+      size: 8.5in 11in;
+      margin: 0.5in;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+      background: #fff;
+      color: #000;
+    }
+
+    .sheet-title {
+      font-size: 11px;
+      color: #aaa;
+      text-align: center;
+      margin-bottom: 24px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ── Label grid ──────────────────────────────────────── */
+    .labels {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    /* ── Individual label ────────────────────────────────── */
+    .label {
+      width: 100%;
+      aspect-ratio: 3.5 / 2;
+      border: 1.5px solid #111;
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 14px 16px 12px;
+      background: #fff;
+      page-break-inside: avoid;
+      position: relative;
+    }
+
+    /* Cut guide marks */
+    .label::before,
+    .label::after {
+      content: '';
+      position: absolute;
+      border-color: #ccc;
+      border-style: dashed;
+    }
+
+    .label-top {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .label-project {
+      font-size: 8px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #999;
+    }
+
+    .label-name {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: #111;
+    }
+
+    .label-year {
+      font-size: 12px;
+      color: #666;
+      font-weight: 500;
+      margin-top: 2px;
+    }
+
+    /* NFC tap area */
+    .label-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid #e0e0e0;
+      padding-top: 8px;
+      margin-top: 4px;
+    }
+
+    .tap-text {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #555;
+      line-height: 1.4;
+    }
+
+    .tap-target {
+      width: 36px;
+      height: 36px;
+      border: 1.5px solid #111;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    /* NFC signal rings */
+    .tap-target::before {
+      content: '';
+      position: absolute;
+      width: 26px;
+      height: 26px;
+      border: 1px solid #bbb;
+      border-radius: 50%;
+    }
+
+    .tap-target-label {
+      font-size: 7px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #111;
+      z-index: 1;
+    }
+
+    /* ── Per-card maker accent ───────────────────────────── */
+    .label.nvidia .label-name { color: #2a6600; }
+    .label.nvidia .tap-target { border-color: #2a6600; }
+    .label.nvidia .tap-target::before { border-color: #7cb800; }
+    .label.nvidia .tap-target-label { color: #2a6600; }
+
+    .label.ati .label-name { color: #8b1a12; }
+    .label.ati .tap-target { border-color: #8b1a12; }
+    .label.ati .tap-target::before { border-color: #d44; }
+    .label.ati .tap-target-label { color: #8b1a12; }
+
+    /* ── Print-only instructions ─────────────────────────── */
+    .print-note {
+      font-size: 10px;
+      color: #bbb;
+      text-align: center;
+      margin-top: 28px;
+    }
+
+    @media print {
+      .sheet-title, .print-note { display: none; }
+      body { background: white; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="sheet-title">Artifact — Print Labels · Cut along borders · Attach NFC sticker to the circle</div>
+
+<div class="labels">
+
+  <!-- FX 5600 -->
+  <div class="label nvidia">
+    <div class="label-top">
+      <div class="label-project">Artifact · NVIDIA</div>
+      <div class="label-name">GeForce FX 5600</div>
+      <div class="label-year">2003</div>
+    </div>
+    <div class="label-bottom">
+      <div class="tap-text">Tap your phone here<br>to learn more</div>
+      <div class="tap-target">
+        <span class="tap-target-label">TAP</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Radeon 9550 -->
+  <div class="label ati">
+    <div class="label-top">
+      <div class="label-project">Artifact · ATI</div>
+      <div class="label-name">Radeon 9550</div>
+      <div class="label-year">2004</div>
+    </div>
+    <div class="label-bottom">
+      <div class="tap-text">Tap your phone here<br>to learn more</div>
+      <div class="tap-target">
+        <span class="tap-target-label">TAP</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7800 GS -->
+  <div class="label nvidia">
+    <div class="label-top">
+      <div class="label-project">Artifact · NVIDIA</div>
+      <div class="label-name">GeForce 7800 GS</div>
+      <div class="label-year">2006</div>
+    </div>
+    <div class="label-bottom">
+      <div class="tap-text">Tap your phone here<br>to learn more</div>
+      <div class="tap-target">
+        <span class="tap-target-label">TAP</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- HD 2900 XT -->
+  <div class="label ati">
+    <div class="label-top">
+      <div class="label-project">Artifact · AMD / ATI</div>
+      <div class="label-name">Radeon HD 2900 XT</div>
+      <div class="label-year">2007</div>
+    </div>
+    <div class="label-bottom">
+      <div class="tap-text">Tap your phone here<br>to learn more</div>
+      <div class="tap-target">
+        <span class="tap-target-label">TAP</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- HD 5750 -->
+  <div class="label ati">
+    <div class="label-top">
+      <div class="label-project">Artifact · AMD</div>
+      <div class="label-name">Radeon HD 5750</div>
+      <div class="label-year">2009</div>
+    </div>
+    <div class="label-bottom">
+      <div class="tap-text">Tap your phone here<br>to learn more</div>
+      <div class="tap-target">
+        <span class="tap-target-label">TAP</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- GTX 760 FTW -->
+  <div class="label nvidia">
+    <div class="label-top">
+      <div class="label-project">Artifact · NVIDIA</div>
+      <div class="label-name">GeForce GTX 760 FTW</div>
+      <div class="label-year">2013</div>
+    </div>
+    <div class="label-bottom">
+      <div class="tap-text">Tap your phone here<br>to learn more</div>
+      <div class="tap-target">
+        <span class="tap-target-label">TAP</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<p class="print-note">Print at 100% scale · Do not scale to fit · Attach NFC sticker centered on the TAP circle</p>
+
+</body>
+</html>
