@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Big Picture — GPU Wall</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .conclusion-hero {
+      padding: 40px 0 28px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 28px;
+    }
+    .conclusion-hero .section-label { margin-bottom: 12px; }
+    .conclusion-hero h1 {
+      font-size: 30px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    .conclusion-hero p {
+      font-size: 15px;
+      color: var(--text-mid);
+      line-height: 1.7;
+    }
+
+    /* The combined stat — hero number */
+    .combined-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      margin-bottom: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    .combined-block::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+    }
+    .combined-device-name {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .combined-device-chip {
+      font-size: 13px;
+      color: var(--text-dim);
+      margin-bottom: 20px;
+    }
+    .combined-stat {
+      font-size: 15px;
+      color: var(--text-mid);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .combined-stat strong { color: var(--text); font-weight: 600; }
+    .combined-stat .big {
+      display: block;
+      font-size: 52px;
+      font-weight: 900;
+      color: var(--accent);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin: 8px 0 4px;
+    }
+    .punchline {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.5;
+      padding: 16px;
+      background: var(--accent-dim);
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      margin-top: 4px;
+    }
+
+    /* Per-card breakdown */
+    .breakdown {
+      margin-bottom: 28px;
+    }
+    .breakdown-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+    }
+    .breakdown-row:last-child { border-bottom: none; }
+    .breakdown-year {
+      color: var(--text-dim);
+      width: 36px;
+      flex-shrink: 0;
+    }
+    .breakdown-name {
+      flex: 1;
+      color: var(--text-mid);
+    }
+    .breakdown-mult {
+      font-weight: 700;
+      color: var(--accent);
+      text-align: right;
+      min-width: 48px;
+    }
+    .breakdown-bar-wrap {
+      width: 80px;
+      height: 4px;
+      background: var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .breakdown-bar-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 2px;
+      width: 0;
+      transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Closing essay */
+    .essay {
+      margin-bottom: 36px;
+    }
+    .essay p {
+      font-size: 15px;
+      color: var(--text-mid);
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+    .essay p:last-child { margin-bottom: 0; }
+    .essay em {
+      color: var(--text);
+      font-style: normal;
+      font-weight: 500;
+    }
+    .essay .horizon {
+      font-size: 16px;
+      color: var(--text);
+      font-weight: 500;
+      line-height: 1.65;
+      border-left: 2px solid var(--accent);
+      padding-left: 16px;
+      margin: 20px 0;
+    }
+
+    /* Desktop placeholder */
+    .desktop-placeholder {
+      font-size: 15px;
+      color: var(--text-mid);
+      line-height: 1.7;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 28px;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <div class="conclusion-hero">
+    <div class="section-label">The big picture</div>
+    <h1>What these six cards add up to</h1>
+    <p>You've seen the individual comparisons. Here's the number that puts everything in perspective.</p>
+  </div>
+
+  <div id="combined-block-wrap">
+    <div class="combined-block">
+      <div class="comparison-loading">Detecting your device…</div>
+    </div>
+  </div>
+
+  <section class="breakdown" id="breakdown-section" style="display:none">
+    <div class="section-label">Card by card</div>
+    <div id="breakdown-rows"></div>
+  </section>
+
+  <section class="essay">
+    <div class="section-label">Where this leads</div>
+    <div class="essay-body">
+      <p>The six cards on this wall span a single decade — 2003 to 2013. In that time, transistor counts grew by 56×, memory by 16×, and raw compute by roughly 90×. Each generation arrived with new promises, new failures, and new rivalries.</p>
+
+      <p>But the arc doesn't stop here. The card that closes this collection — the GTX 760 — was the generation where engineers started asking a different question. Not just <em>"how fast can it render?"</em> but <em>"what else can it compute?"</em></p>
+
+      <div class="horizon">
+        The GPU that learned to draw shadows in 2003 became, a decade later, the chip that would teach machines to see. The same parallel architecture — thousands of tiny cores doing the same operation at once — turns out to be exactly what you need to train a neural network.
+      </div>
+
+      <p>Every modern AI system — image generators, language models, the tools recommending what you watch and translating what you say — runs on the descendants of cards like these. The GTX 760's Kepler architecture is a direct ancestor of the chips NVIDIA builds for AI datacenters today.</p>
+
+      <p>The phone in your hand carries forward the same lineage. The GPU that fits in your pocket, runs on a battery, and renders your camera's portrait mode in real time — it is, in a direct technical sense, the child of what's mounted on this wall.</p>
+
+      <p><em>These cards didn't just power games. They powered the future.</em></p>
+    </div>
+  </section>
+
+  <nav class="collection">
+    <div class="section-label">Go back to the collection</div>
+    <div class="collection-grid">
+      <a class="collection-item" href="fx5600.html">
+        <span class="collection-year">2003</span>
+        <span class="collection-name">GeForce FX 5600</span>
+        <span class="collection-dot"></span>
+      </a>
+      <a class="collection-item" href="radeon9550.html">
+        <span class="collection-year">2004</span>
+        <span class="collection-name">Radeon 9550</span>
+        <span class="collection-dot"></span>
+      </a>
+      <a class="collection-item" href="7800gs.html">
+        <span class="collection-year">2006</span>
+        <span class="collection-name">GeForce 7800 GS</span>
+        <span class="collection-dot"></span>
+      </a>
+      <a class="collection-item" href="hd2900xt.html">
+        <span class="collection-year">2007</span>
+        <span class="collection-name">Radeon HD 2900 XT</span>
+        <span class="collection-dot"></span>
+      </a>
+      <a class="collection-item" href="hd5750.html">
+        <span class="collection-year">2009</span>
+        <span class="collection-name">Radeon HD 5750</span>
+        <span class="collection-dot"></span>
+      </a>
+      <a class="collection-item" href="gtx760.html">
+        <span class="collection-year">2013</span>
+        <span class="collection-name">GeForce GTX 760 FTW</span>
+        <span class="collection-dot"></span>
+      </a>
+    </div>
+  </nav>
+
+</div>
+
+<script src="js/device.js"></script>
+<script>
+const ALL_CARDS = [
+  { year: 2003, name: 'GeForce FX 5600',    tflops: 0.025  },
+  { year: 2004, name: 'Radeon 9550',         tflops: 0.020  },
+  { year: 2006, name: 'GeForce 7800 GS',     tflops: 0.096  },
+  { year: 2007, name: 'Radeon HD 2900 XT',   tflops: 0.475  },
+  { year: 2009, name: 'Radeon HD 5750',      tflops: 0.9    },
+  { year: 2013, name: 'GeForce GTX 760 FTW', tflops: 2.26   },
+];
+
+const COMBINED_TFLOPS = ALL_CARDS.reduce((sum, c) => sum + c.tflops, 0); // ~3.776
+
+document.addEventListener('DOMContentLoaded', () => {
+  const device = detectDevice();
+  const wrap = document.getElementById('combined-block-wrap');
+
+  if (!device) {
+    wrap.innerHTML = `
+      <div class="desktop-placeholder">
+        <strong>Tap this page on your phone</strong> to see how your device compares to all six cards combined.<br><br>
+        Combined GPU performance of all six cards: <strong>~3.8 TFLOPS</strong>. A current flagship phone delivers roughly the same from a battery-powered chip.
+      </div>`;
+    return;
+  }
+
+  const combinedMultiplier = device.tflops / COMBINED_TFLOPS;
+  const beats = combinedMultiplier >= 1;
+
+  let punchline;
+  if (combinedMultiplier >= 1) {
+    punchline = `Your ${device.model} has more GPU power than every card on this wall — combined — and fits in your pocket.`;
+  } else {
+    const pct = Math.round(combinedMultiplier * 100);
+    punchline = `Your ${device.model} reaches ${pct}% of all six cards combined. The last card alone — the 2013 GTX 760 — is the one closing the gap.`;
+  }
+
+  wrap.innerHTML = `
+    <div class="combined-block">
+      <div class="combined-device-name">${device.model}</div>
+      <div class="combined-device-chip">${device.chipName} · ~${fmt(device.tflops)}</div>
+      <div class="combined-stat">
+        Combined GPU performance of all 6 cards on this wall:
+        <strong class="big">~${fmt(COMBINED_TFLOPS)}</strong>
+        Your phone: <strong>~${fmt(device.tflops)}</strong>
+      </div>
+      <div class="punchline">${punchline}</div>
+    </div>`;
+
+  // Render breakdown
+  const section = document.getElementById('breakdown-section');
+  const rows = document.getElementById('breakdown-rows');
+  if (section && rows) {
+    section.style.display = '';
+    const maxMult = device.tflops / ALL_CARDS[0].tflops; // largest multiplier
+    rows.innerHTML = ALL_CARDS.map((card, i) => {
+      const mult = Math.round(device.tflops / card.tflops);
+      const barPct = Math.min(100, (card.tflops / device.tflops) * 100);
+      return `
+        <div class="breakdown-row">
+          <span class="breakdown-year">${card.year}</span>
+          <span class="breakdown-name">${card.name}</span>
+          <div class="breakdown-bar-wrap">
+            <div class="breakdown-bar-fill" style="transition-delay: ${i * 0.08}s" data-pct="${barPct}"></div>
+          </div>
+          <span class="breakdown-mult">${mult}×</span>
+        </div>`;
+    }).join('');
+
+    // Animate bars
+    setTimeout(() => {
+      document.querySelectorAll('.breakdown-bar-fill').forEach(el => {
+        el.style.width = el.dataset.pct + '%';
+      });
+    }, 100);
+  }
+});
+
+function fmt(t) {
+  if (t < 0.1)  return (t * 1000).toFixed(0) + ' GFLOPS';
+  if (t < 1.0)  return t.toFixed(2) + ' TFLOPS';
+  return t.toFixed(1) + ' TFLOPS';
+}
+</script>
+</body>
+</html>
