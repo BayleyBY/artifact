@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GeForce FX 5600 — GPU Wall</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="page">
+
+  <header class="card-header">
+    <div class="card-maker nvidia">NVIDIA</div>
+    <div class="card-name">GeForce FX 5600</div>
+    <div class="card-meta">
+      <span>2003</span>
+      <span>AGP 8x</span>
+      <span>DirectX 9</span>
+    </div>
+    <div class="card-era">Act I — The DirectX 9 Wars</div>
+  </header>
+
+  <section class="comparison">
+    <div id="comparison-content">
+      <div class="comparison-loading">Detecting your device…</div>
+    </div>
+  </section>
+
+  <section class="specs">
+    <div id="specs-rows"></div>
+  </section>
+
+  <section class="story">
+    <div class="section-label">The story</div>
+    <div class="story-text" id="story-text"></div>
+  </section>
+
+  <nav class="collection">
+    <div class="section-label">The collection</div>
+    <div class="collection-grid">
+      <a class="collection-item active" href="fx5600.html">
+        <span class="collection-year">2003</span>
+        <span class="collection-name">GeForce FX 5600</span>
+        <span class="collection-dot"></span>
+      </a>
+      <a class="collection-item" href="radeon9550.html">
+        <span class="collection-year">2004</span>
+        <span class="collection-name">Radeon 9550</span>
+        <span class="collection-dot"></span>
+      </a>
+      <a class="collection-item" href="7800gs.html">
+        <span class="collection-year">2006</span>
+        <span class="collection-name">GeForce 7800 GS</span>
+        <span class="collection-dot"></span>
+      </a>
+      <a class="collection-item" href="hd2900xt.html">
+        <span class="collection-year">2007</span>
+        <span class="collection-name">Radeon HD 2900 XT</span>
+        <span class="collection-dot"></span>
+      </a>
+      <a class="collection-item" href="hd5750.html">
+        <span class="collection-year">2009</span>
+        <span class="collection-name">Radeon HD 5750</span>
+        <span class="collection-dot"></span>
+      </a>
+      <a class="collection-item" href="gtx760.html">
+        <span class="collection-year">2013</span>
+        <span class="collection-name">GeForce GTX 760 FTW</span>
+        <span class="collection-dot"></span>
+      </a>
+    </div>
+  </nav>
+
+</div>
+
+<script src="js/device.js"></script>
+<script>
+window.CARD_DATA = {
+  name: 'GeForce FX 5600',
+  tflops: 0.025,
+  powerWatts: 40,
+  specs: [
+    { label: 'GPU',          value: 'NV31' },
+    { label: 'Transistors',  value: '63 million' },
+    { label: 'Memory',       value: '256MB DDR' },
+    { label: 'Memory bus',   value: '128-bit' },
+    { label: 'Interface',    value: 'AGP 8x' },
+    { label: 'DirectX',      value: 'DirectX 9' },
+    { label: 'Performance',  value: '~25 GFLOPS' },
+    { label: 'Power draw',   value: '~40W' },
+  ],
+  story: [
+    'NVIDIA arrived at the DirectX 9 era first — and got it badly wrong. The FX 5600 ran hot, drew too much power for its class, and underdelivered on the programmable shader promises of the new API.',
+    'Its rival, ATI\'s Radeon 9700 Pro, launched months later and outclassed it in nearly every benchmark. The FX line became a footnote in GPU history: the generation where NVIDIA stumbled and ATI took the lead.',
+    'Still, this card marks a turning point. After it, games would never look the same. <em>Programmable shaders changed everything</em> — even if this card couldn\'t quite deliver on the promise.'
+  ]
+};
+</script>
+<script src="js/card.js"></script>
+</body>
+</html>

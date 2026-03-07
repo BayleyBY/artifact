@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Radeon HD 2900 XT — GPU Wall</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="page">
+
+  <header class="card-header">
+    <div class="card-maker ati">AMD / ATI</div>
+    <div class="card-name">Radeon HD 2900 XT</div>
+    <div class="card-meta">
+      <span>2007</span>
+      <span>PCIe 2.0</span>
+      <span>DirectX 10</span>
+    </div>
+    <div class="card-era">Act III — A New Slot, A New War</div>
+  </header>
+
+  <section class="comparison">
+    <div id="comparison-content">
+      <div class="comparison-loading">Detecting your device…</div>
+    </div>
+  </section>
+
+  <section class="specs">
+    <div id="specs-rows"></div>
+  </section>
+
+  <section class="story">
+    <div class="section-label">The story</div>
+    <div class="story-text" id="story-text"></div>
+  </section>
+
+  <nav class="collection">
+    <div class="section-label">The collection</div>
+    <div class="collection-grid">
+      <a class="collection-item" href="fx5600.html">
+        <span class="collection-year">2003</span>
+        <span class="collection-name">GeForce FX 5600</span>
+        <span class="collection-dot"></span>
+      </a>
+      <a class="collection-item" href="radeon9550.html">
+        <span class="collection-year">2004</span>
+        <span class="collection-name">Radeon 9550</span>
+        <span class="collection-dot"></span>
+      </a>
+      <a class="collection-item" href="7800gs.html">
+        <span class="collection-year">2006</span>
+        <span class="collection-name">GeForce 7800 GS</span>
+        <span class="collection-dot"></span>
+      </a>
+      <a class="collection-item active" href="hd2900xt.html">
+        <span class="collection-year">2007</span>
+        <span class="collection-name">Radeon HD 2900 XT</span>
+        <span class="collection-dot"></span>
+      </a>
+      <a class="collection-item" href="hd5750.html">
+        <span class="collection-year">2009</span>
+        <span class="collection-name">Radeon HD 5750</span>
+        <span class="collection-dot"></span>
+      </a>
+      <a class="collection-item" href="gtx760.html">
+        <span class="collection-year">2013</span>
+        <span class="collection-name">GeForce GTX 760 FTW</span>
+        <span class="collection-dot"></span>
+      </a>
+    </div>
+  </nav>
+
+</div>
+
+<script src="js/device.js"></script>
+<script>
+window.CARD_DATA = {
+  name: 'Radeon HD 2900 XT',
+  tflops: 0.475,
+  powerWatts: 215,
+  specs: [
+    { label: 'GPU',          value: 'R600' },
+    { label: 'Transistors',  value: '700 million' },
+    { label: 'Memory',       value: '512MB GDDR4' },
+    { label: 'Memory bus',   value: '512-bit (ring bus)' },
+    { label: 'Interface',    value: 'PCIe 2.0 x16' },
+    { label: 'DirectX',      value: 'DirectX 10' },
+    { label: 'Performance',  value: '~475 GFLOPS' },
+    { label: 'Power draw',   value: '215W' },
+  ],
+  story: [
+    'AMD arrived at DirectX 10 with enormous ambition. The 2900 XT features a <em>512-bit memory bus</em> — wider than most cards built today — and drew 215 watts from the wall. Years in development. Flagship pricing.',
+    'NVIDIA\'s GeForce 8800 GTX had launched months earlier and was faster in almost every benchmark. History repeated itself: AMD, the card in NVIDIA\'s old shoes.',
+    'But look at that memory bus. AMD wouldn\'t revisit the idea of extreme memory bandwidth until 2015, when they built the Fury X using an entirely new technology called HBM. Some ideas are just early. This was one of them.'
+  ]
+};
+</script>
+<script src="js/card.js"></script>
+</body>
+</html>

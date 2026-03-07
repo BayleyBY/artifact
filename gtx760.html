@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GeForce GTX 760 FTW — GPU Wall</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="page">
+
+  <header class="card-header">
+    <div class="card-maker nvidia">NVIDIA</div>
+    <div class="card-name">GeForce GTX 760 FTW</div>
+    <div class="card-meta">
+      <span>2013</span>
+      <span>PCIe 3.0</span>
+      <span>DirectX 11</span>
+    </div>
+    <div class="card-era">Act V — The Compute Era</div>
+  </header>
+
+  <section class="comparison">
+    <div id="comparison-content">
+      <div class="comparison-loading">Detecting your device…</div>
+    </div>
+  </section>
+
+  <section class="specs">
+    <div id="specs-rows"></div>
+  </section>
+
+  <section class="story">
+    <div class="section-label">The story</div>
+    <div class="story-text" id="story-text"></div>
+  </section>
+
+  <nav class="collection">
+    <div class="section-label">The collection</div>
+    <div class="collection-grid">
+      <a class="collection-item" href="fx5600.html">
+        <span class="collection-year">2003</span>
+        <span class="collection-name">GeForce FX 5600</span>
+        <span class="collection-dot"></span>
+      </a>
+      <a class="collection-item" href="radeon9550.html">
+        <span class="collection-year">2004</span>
+        <span class="collection-name">Radeon 9550</span>
+        <span class="collection-dot"></span>
+      </a>
+      <a class="collection-item" href="7800gs.html">
+        <span class="collection-year">2006</span>
+        <span class="collection-name">GeForce 7800 GS</span>
+        <span class="collection-dot"></span>
+      </a>
+      <a class="collection-item" href="hd2900xt.html">
+        <span class="collection-year">2007</span>
+        <span class="collection-name">Radeon HD 2900 XT</span>
+        <span class="collection-dot"></span>
+      </a>
+      <a class="collection-item" href="hd5750.html">
+        <span class="collection-year">2009</span>
+        <span class="collection-name">Radeon HD 5750</span>
+        <span class="collection-dot"></span>
+      </a>
+      <a class="collection-item active" href="gtx760.html">
+        <span class="collection-year">2013</span>
+        <span class="collection-name">GeForce GTX 760 FTW</span>
+        <span class="collection-dot"></span>
+      </a>
+    </div>
+  </nav>
+
+</div>
+
+<script src="js/device.js"></script>
+<script>
+window.CARD_DATA = {
+  name: 'GeForce GTX 760 FTW',
+  tflops: 2.26,
+  powerWatts: 170,
+  specs: [
+    { label: 'GPU',          value: 'GK104 (Kepler)' },
+    { label: 'Transistors',  value: '3.54 billion' },
+    { label: 'Memory',       value: '4GB GDDR5' },
+    { label: 'Memory bus',   value: '256-bit' },
+    { label: 'Interface',    value: 'PCIe 3.0 x16' },
+    { label: 'Cooler',       value: 'EVGA ACX (custom triple-fan)' },
+    { label: 'DirectX',      value: 'DirectX 11 / CUDA' },
+    { label: 'Performance',  value: '2.26 TFLOPS' },
+    { label: 'Power draw',   value: '~170W' },
+  ],
+  story: [
+    'NVIDIA\'s Kepler architecture changed the conversation. The GTX 760 wasn\'t just a gaming card — it was a CUDA compute device. Researchers started running machine learning experiments on cards like this one. The line between GPU and general-purpose processor began to blur.',
+    'The "FTW" (For The Win) badge means EVGA overclocked it and designed a custom cooling solution. That triple-fan shroud was legitimately innovative in 2013 — quieter and cooler than NVIDIA\'s reference design.',
+    '<em>Now look at your phone.</em> This card delivered 2.26 TFLOPS from a 170-watt card the size of a hardcover book. The chip in your hand delivers comparable or greater performance from a battery the size of your palm. That gap closed in roughly ten years.'
+  ]
+};
+</script>
+<script src="js/card.js"></script>
+</body>
+</html>

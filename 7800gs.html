@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GeForce 7800 GS — GPU Wall</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="page">
+
+  <header class="card-header">
+    <div class="card-maker nvidia">NVIDIA</div>
+    <div class="card-name">GeForce 7800 GS</div>
+    <div class="card-meta">
+      <span>2006</span>
+      <span>AGP 8x</span>
+      <span>DirectX 9c</span>
+    </div>
+    <div class="card-era">Act II — AGP's Last Stand</div>
+  </header>
+
+  <section class="comparison">
+    <div id="comparison-content">
+      <div class="comparison-loading">Detecting your device…</div>
+    </div>
+  </section>
+
+  <section class="specs">
+    <div id="specs-rows"></div>
+  </section>
+
+  <section class="story">
+    <div class="section-label">The story</div>
+    <div class="story-text" id="story-text"></div>
+  </section>
+
+  <nav class="collection">
+    <div class="section-label">The collection</div>
+    <div class="collection-grid">
+      <a class="collection-item" href="fx5600.html">
+        <span class="collection-year">2003</span>
+        <span class="collection-name">GeForce FX 5600</span>
+        <span class="collection-dot"></span>
+      </a>
+      <a class="collection-item" href="radeon9550.html">
+        <span class="collection-year">2004</span>
+        <span class="collection-name">Radeon 9550</span>
+        <span class="collection-dot"></span>
+      </a>
+      <a class="collection-item active" href="7800gs.html">
+        <span class="collection-year">2006</span>
+        <span class="collection-name">GeForce 7800 GS</span>
+        <span class="collection-dot"></span>
+      </a>
+      <a class="collection-item" href="hd2900xt.html">
+        <span class="collection-year">2007</span>
+        <span class="collection-name">Radeon HD 2900 XT</span>
+        <span class="collection-dot"></span>
+      </a>
+      <a class="collection-item" href="hd5750.html">
+        <span class="collection-year">2009</span>
+        <span class="collection-name">Radeon HD 5750</span>
+        <span class="collection-dot"></span>
+      </a>
+      <a class="collection-item" href="gtx760.html">
+        <span class="collection-year">2013</span>
+        <span class="collection-name">GeForce GTX 760 FTW</span>
+        <span class="collection-dot"></span>
+      </a>
+    </div>
+  </nav>
+
+</div>
+
+<script src="js/device.js"></script>
+<script>
+window.CARD_DATA = {
+  name: 'GeForce 7800 GS',
+  tflops: 0.096,
+  powerWatts: 50,
+  specs: [
+    { label: 'GPU',          value: 'G70 (via HSI bridge)' },
+    { label: 'Transistors',  value: '302 million' },
+    { label: 'Memory',       value: '256MB GDDR3' },
+    { label: 'Memory bus',   value: '256-bit' },
+    { label: 'Interface',    value: 'AGP 8x' },
+    { label: 'DirectX',      value: 'DirectX 9c / SM 3.0' },
+    { label: 'Performance',  value: '~96 GFLOPS' },
+    { label: 'Power draw',   value: '~50W' },
+  ],
+  story: [
+    'This card is a trick. Look at the edge connector — it\'s AGP, same slot as the two cards to its left. But inside, this is a PCIe GPU. NVIDIA\'s G70 chip connects to the AGP bus through an internal bridge chip called the HSI.',
+    'By 2006, PCI Express had won. Motherboard makers had moved on. But millions of people still had AGP systems and didn\'t want to rebuild their entire machine for a new slot. <em>This card was a lifeline.</em>',
+    'One of the last high-performance AGP cards ever manufactured. The card to the right of this one uses a completely different connector. After the 7800 GS, AGP was done.'
+  ]
+};
+</script>
+<script src="js/card.js"></script>
+</body>
+</html>

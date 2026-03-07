@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GPU Wall — Ten Years of Graphics Cards</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .hero {
+      padding: 48px 0 36px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 32px;
+    }
+    .hero-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .hero-title {
+      font-size: 34px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+    .hero-sub {
+      font-size: 15px;
+      color: var(--text-mid);
+      line-height: 1.7;
+    }
+
+    .stats-row {
+      display: flex;
+      gap: 0;
+      margin-bottom: 32px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .stat {
+      flex: 1;
+      padding: 16px 12px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .stat:last-child { border-right: none; }
+    .stat-value {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: -0.02em;
+    }
+    .stat-label {
+      font-size: 11px;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+
+    .cards-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 40px;
+    }
+    .card-link {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      text-decoration: none;
+      color: var(--text);
+      transition: border-color 0.15s;
+    }
+    .card-link:hover { border-color: #444; }
+    .card-link-year {
+      font-size: 13px;
+      color: var(--text-dim);
+      width: 38px;
+      flex-shrink: 0;
+      padding-top: 2px;
+    }
+    .card-link-body { flex: 1; }
+    .card-link-name {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+    .card-link-name .maker-nvidia { color: var(--nvidia); }
+    .card-link-name .maker-ati    { color: var(--ati); }
+    .card-link-desc {
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+    .card-link-act {
+      font-size: 11px;
+      color: var(--accent);
+      margin-top: 5px;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <div class="hero">
+    <div class="hero-label">GPU Wall</div>
+    <div class="hero-title">Ten Years of Graphics Cards</div>
+    <div class="hero-sub">
+      Six cards. One decade. The story of how computing power went from the size of a shoebox to the palm of your hand.
+    </div>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat">
+      <div class="stat-value">56×</div>
+      <div class="stat-label">transistors</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">16×</div>
+      <div class="stat-label">memory</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">90×</div>
+      <div class="stat-label">compute</div>
+    </div>
+  </div>
+
+  <div class="section-label">The cards</div>
+  <div class="cards-list">
+
+    <a class="card-link" href="fx5600.html">
+      <span class="card-link-year">2003</span>
+      <div class="card-link-body">
+        <div class="card-link-name"><span class="maker-nvidia">NVIDIA</span> GeForce FX 5600</div>
+        <div class="card-link-desc">63M transistors · 256MB DDR · AGP · ~25 GFLOPS</div>
+        <div class="card-link-act">Act I — The DirectX 9 Wars</div>
+      </div>
+    </a>
+
+    <a class="card-link" href="radeon9550.html">
+      <span class="card-link-year">2004</span>
+      <div class="card-link-body">
+        <div class="card-link-name"><span class="maker-ati">ATI</span> Radeon 9550</div>
+        <div class="card-link-desc">75M transistors · 256MB DDR · AGP · ~20 GFLOPS</div>
+        <div class="card-link-act">Act I — The DirectX 9 Wars</div>
+      </div>
+    </a>
+
+    <a class="card-link" href="7800gs.html">
+      <span class="card-link-year">2006</span>
+      <div class="card-link-body">
+        <div class="card-link-name"><span class="maker-nvidia">NVIDIA</span> GeForce 7800 GS</div>
+        <div class="card-link-desc">302M transistors · 256MB GDDR3 · AGP · ~96 GFLOPS</div>
+        <div class="card-link-act">Act II — AGP's Last Stand</div>
+      </div>
+    </a>
+
+    <a class="card-link" href="hd2900xt.html">
+      <span class="card-link-year">2007</span>
+      <div class="card-link-body">
+        <div class="card-link-name"><span class="maker-ati">AMD / ATI</span> Radeon HD 2900 XT</div>
+        <div class="card-link-desc">700M transistors · 512MB GDDR4 · PCIe · 215W · ~475 GFLOPS</div>
+        <div class="card-link-act">Act III — A New Slot, A New War</div>
+      </div>
+    </a>
+
+    <a class="card-link" href="hd5750.html">
+      <span class="card-link-year">2009</span>
+      <div class="card-link-body">
+        <div class="card-link-name"><span class="maker-ati">AMD</span> Radeon HD 5750</div>
+        <div class="card-link-desc">1.04B transistors · 1GB GDDR5 · PCIe · ~900 GFLOPS</div>
+        <div class="card-link-act">Act IV — The New World</div>
+      </div>
+    </a>
+
+    <a class="card-link" href="gtx760.html">
+      <span class="card-link-year">2013</span>
+      <div class="card-link-body">
+        <div class="card-link-name"><span class="maker-nvidia">NVIDIA</span> GeForce GTX 760 FTW</div>
+        <div class="card-link-desc">3.54B transistors · 4GB GDDR5 · PCIe 3.0 · 2.26 TFLOPS</div>
+        <div class="card-link-act">Act V — The Compute Era</div>
+      </div>
+    </a>
+
+  </div>
+
+</div>
+</body>
+</html>

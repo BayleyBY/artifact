@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Radeon HD 5750 — GPU Wall</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="page">
+
+  <header class="card-header">
+    <div class="card-maker ati">AMD</div>
+    <div class="card-name">Radeon HD 5750</div>
+    <div class="card-meta">
+      <span>2009</span>
+      <span>PCIe 2.0</span>
+      <span>DirectX 11</span>
+    </div>
+    <div class="card-era">Act IV — The New World</div>
+  </header>
+
+  <section class="comparison">
+    <div id="comparison-content">
+      <div class="comparison-loading">Detecting your device…</div>
+    </div>
+  </section>
+
+  <section class="specs">
+    <div id="specs-rows"></div>
+  </section>
+
+  <section class="story">
+    <div class="section-label">The story</div>
+    <div class="story-text" id="story-text"></div>
+  </section>
+
+  <nav class="collection">
+    <div class="section-label">The collection</div>
+    <div class="collection-grid">
+      <a class="collection-item" href="fx5600.html">
+        <span class="collection-year">2003</span>
+        <span class="collection-name">GeForce FX 5600</span>
+        <span class="collection-dot"></span>
+      </a>
+      <a class="collection-item" href="radeon9550.html">
+        <span class="collection-year">2004</span>
+        <span class="collection-name">Radeon 9550</span>
+        <span class="collection-dot"></span>
+      </a>
+      <a class="collection-item" href="7800gs.html">
+        <span class="collection-year">2006</span>
+        <span class="collection-name">GeForce 7800 GS</span>
+        <span class="collection-dot"></span>
+      </a>
+      <a class="collection-item" href="hd2900xt.html">
+        <span class="collection-year">2007</span>
+        <span class="collection-name">Radeon HD 2900 XT</span>
+        <span class="collection-dot"></span>
+      </a>
+      <a class="collection-item active" href="hd5750.html">
+        <span class="collection-year">2009</span>
+        <span class="collection-name">Radeon HD 5750</span>
+        <span class="collection-dot"></span>
+      </a>
+      <a class="collection-item" href="gtx760.html">
+        <span class="collection-year">2013</span>
+        <span class="collection-name">GeForce GTX 760 FTW</span>
+        <span class="collection-dot"></span>
+      </a>
+    </div>
+  </nav>
+
+</div>
+
+<script src="js/device.js"></script>
+<script>
+window.CARD_DATA = {
+  name: 'Radeon HD 5750',
+  tflops: 0.9,
+  powerWatts: 86,
+  specs: [
+    { label: 'GPU',          value: 'Juniper XT' },
+    { label: 'Transistors',  value: '1.04 billion' },
+    { label: 'Memory',       value: '1GB GDDR5' },
+    { label: 'Memory bus',   value: '128-bit' },
+    { label: 'Interface',    value: 'PCIe 2.0 x16' },
+    { label: 'DirectX',      value: 'DirectX 11' },
+    { label: 'Performance',  value: '~900 GFLOPS' },
+    { label: 'Power draw',   value: '~86W' },
+  ],
+  story: [
+    'Two years after the 2900 XT\'s stumble, AMD came back with something different. The HD 5750 was the first mainstream card to support <em>DirectX 11</em> — tessellation, hardware compute shaders, the foundations of modern rendering. AMD shipped it months before NVIDIA.',
+    'Notice the memory: 1GB of GDDR5. The card to its left had 512MB of GDDR4 and cost significantly more. This is what a healthy generation looks like — more, faster, cheaper.',
+    'The transistor count crossed one billion on this card. A milestone that would have been incomprehensible to the engineers who designed the FX 5600 six years earlier.'
+  ]
+};
+</script>
+<script src="js/card.js"></script>
+</body>
+</html>
