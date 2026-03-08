@@ -1,63 +1,87 @@
 # Artifact
 
-Six shadow-boxed graphics cards spanning 2003–2013, each paired with an NFC tag that opens a mobile page telling its story — and comparing it to the visitor's own phone.
+A shadow box art installation featuring six graphics cards spanning 2003–2013. Each card is paired with an NFC tag that opens a mobile page telling its story — and comparing it to the visitor's own phone.
 
-## Pages
+**Live site:** https://bayleyby.github.io/artifact/
 
-| Card | File | NFC URL |
-|------|------|---------|
-| NVIDIA GeForce FX 5600 (2003) | `fx5600.html` | `https://bayleyby.github.io/artifact/fx5600.html` |
-| ATI Radeon 9550 (2004) | `radeon9550.html` | `https://bayleyby.github.io/artifact/radeon9550.html` |
-| NVIDIA GeForce 7800 GS (2006) | `7800gs.html` | `https://bayleyby.github.io/artifact/7800gs.html` |
-| AMD Radeon HD 2900 XT (2007) | `hd2900xt.html` | `https://bayleyby.github.io/artifact/hd2900xt.html` |
-| AMD Radeon HD 5750 (2009) | `hd5750.html` | `https://bayleyby.github.io/artifact/hd5750.html` |
-| NVIDIA GeForce GTX 760 FTW (2013) | `gtx760.html` | `https://bayleyby.github.io/artifact/gtx760.html` |
+---
 
-## Hosting on GitHub Pages
+## The Collection
 
-1. Create a new repo: `github.com/BayleyBY/artifact`
-2. Push this folder to the `main` branch
-3. Go to Settings → Pages → Source: `main` branch, `/ (root)`
-4. Site will be live at `https://bayleyby.github.io/artifact/`
+| Year | Card | Manufacturer | Era |
+|------|------|-------------|-----|
+| 2003 | GeForce FX 5600 | NVIDIA | Act I — The DirectX 9 Wars |
+| 2004 | Radeon 9550 | ATI | Act I — The DirectX 9 Wars |
+| 2006 | GeForce 7800 GS | NVIDIA | Act II — AGP's Last Stand |
+| 2007 | Radeon HD 2900 XT | AMD / ATI | Act III — A New Slot, A New War |
+| 2009 | Radeon HD 5750 | AMD | Act IV — The New World |
+| 2013 | GeForce GTX 760 FTW | NVIDIA | Act V — The Compute Era |
 
-```bash
-cd /Users/rhea/.openclaw/workspace/artifact
-git init
-git add .
-git commit -m "Initial Artifact site"
-gh repo create BayleyBY/artifact --public --source=. --push
-```
+Over this decade: **56× more transistors · 16× more memory · 90× more compute.**
 
-Then enable GitHub Pages in the repo settings.
+---
 
-## NFC Tags
+## NFC Tag URLs
 
-Program each tag with its card's URL. Any NFC-writeable tag works (NTAG213 is cheap and widely available). Recommended app: **NFC Tools** (iOS/Android).
+Program one tag per card using [NFC Tools](https://www.wakdev.com/en/apps/nfc-tools.html) (iOS/Android). NTAG213 stickers work well.
 
-## How device detection works
+| Card | URL |
+|------|-----|
+| GeForce FX 5600 | `https://bayleyby.github.io/artifact/fx5600.html` |
+| Radeon 9550 | `https://bayleyby.github.io/artifact/radeon9550.html` |
+| GeForce 7800 GS | `https://bayleyby.github.io/artifact/7800gs.html` |
+| Radeon HD 2900 XT | `https://bayleyby.github.io/artifact/hd2900xt.html` |
+| Radeon HD 5750 | `https://bayleyby.github.io/artifact/hd5750.html` |
+| GeForce GTX 760 FTW | `https://bayleyby.github.io/artifact/gtx760.html` |
 
-When a visitor taps the tag, `device.js` reads their browser's User-Agent string and screen resolution to identify their phone model and look up its GPU performance (approximate TFLOPS). It then calculates a multiplier and animates it on screen.
+---
 
-- iPhone detection: screen resolution + iOS version → chip (A9 through A18 Pro)
-- Android detection: model string from User-Agent → chipset database
-- Desktop visitors: see a generic comparison message
+## What each card page includes
 
-All detection runs client-side — no server, no analytics, no tracking.
+- **The story** — narrative context for the card's place in GPU history
+- **Games of the era** — 3 games played on this card, each linking to its YouTube trailer
+- **Your device comparison** — detects the visitor's phone and compares its GPU performance to the card
+- **Specs** — transistors, memory, interface, DirectX, performance
+- **The big picture** — link to a conclusion page comparing the visitor's phone to all 6 cards combined
 
-## Structure
+---
+
+## Device Detection
+
+When a visitor taps the NFC tag, `device.js` identifies their phone using User-Agent and screen resolution, then looks up its GPU performance.
+
+- **iPhone:** screen resolution + iOS version → chip (A9 through A18 Pro)
+- **Android:** model string from User-Agent → chipset database (Snapdragon, Tensor, Exynos)
+- **Desktop:** generic comparison message
+
+All detection is client-side. No server, no analytics, no tracking.
+
+---
+
+## Print Labels
+
+`labels.html` generates a print-ready sheet of six 6"×3" labels — one per card. Each label includes the card name, year, era, specs, and a TAP circle where the NFC sticker is placed.
+
+Open `https://bayleyby.github.io/artifact/labels.html` in a browser and print at **100% scale, no page scaling**.
+
+---
+
+## File Structure
 
 ```
 artifact/
-├── index.html          Overview / collection landing page
+├── index.html          Collection overview
 ├── fx5600.html
 ├── radeon9550.html
 ├── 7800gs.html
 ├── hd2900xt.html
 ├── hd5750.html
 ├── gtx760.html
+├── conclusion.html     Combined comparison + closing essay
+├── labels.html         Print-ready label sheet
 ├── css/
-│   └── style.css       Shared styles
+│   └── style.css
 └── js/
     ├── device.js       Device detection + GPU database
-    └── card.js         Card page logic (comparison, animation)
+    └── card.js         Card page rendering + animations
 ```
