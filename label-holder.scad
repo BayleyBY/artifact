@@ -35,9 +35,11 @@ ramp           = 52;          // triangle leg — controls depth & height of hol
 holder_l       = label_w + 22;// total Z length (11mm overhang each side of label)
 
 slot_t         = 2.2;         // slot thickness (cardstock fits at ~0.5mm; laminate ~1.2mm)
-slot_d         = 16;          // slot depth into body
-slot_pos       = 14;          // mm along 45° face from lower tip [ramp,0] to slot center
-                               // smaller → slot closer to front tip → label tips further forward
+slot_d         = 12;          // slot depth into body
+                               // must be < slot_pos (or the slot cuts through the bottom face)
+slot_pos       = 20;          // mm along 45° face from lower tip [ramp,0] to slot center
+                               // at slot_pos=20, body depth at that point is ~20mm — slot_d=12 fits safely
+                               // smaller → label tips further forward; don't go below ~18
 
 screw_d        = 3.5;         // screw shank diameter (M3.5 or #6 wood screw)
 cbore_d        = 7.5;         // counterbore diameter (screw head sits flush)
