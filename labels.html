@@ -1,379 +1,379 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Artifact — Print Labels</title>
-  <style>
-    @page {
-      size: 8.5in 11in;
-      margin: 0.5in;
-    }
+ <meta charset="UTF-8">
+ <title>Artifact — Print Labels</title>
+ <style>
+ @page {
+ size: 8.5in 11in;
+ margin: 0.5in;
+ }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+ * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    body {
-      font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
-      background: #fff;
-    }
+ body {
+ font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+ background: #fff;
+ }
 
-    /* Two labels per page, stacked */
-    .page {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.4in;
-      margin-bottom: 0.4in;
-      page-break-after: always;
-    }
-    .page:last-of-type {
-      page-break-after: avoid;
-    }
+ /* Two labels per page, stacked */
+ .page {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ gap: 0.4in;
+ margin-bottom: 0.4in;
+ page-break-after: always;
+ }
+ .page:last-of-type {
+ page-break-after: avoid;
+ }
 
-    /* ── Label: 5" wide × 3" tall ───────────────────────── */
-    .label {
-      width: 5in;
-      height: 3in;
-      border: 1.5px solid #222;
-      border-radius: 5px;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      page-break-inside: avoid;
-    }
+ /* ── Label: 5" wide × 3" tall ───────────────────────── */
+ .label {
+ width: 4.85in;
+ height: 3in;
+ border: 8px solid #222;
+ border-radius: 5px;
+ display: flex;
+ flex-direction: column;
+ overflow: hidden;
+ page-break-inside: avoid;
+ }
 
-    /* Top color bar */
-    .label-bar {
-      height: 7px;
-      flex-shrink: 0;
-    }
-    .nvidia .label-bar { background: #4a8a00; }
-    .ati    .label-bar { background: #b52a1e; }
+ /* Top color bar */
+ .label-bar {
+ height: 12px;
+ flex-shrink: 0;
+ }
+ .nvidia .label-bar { background: #4a8a00; }
+ .ati .label-bar { background: #b52a1e; }
 
-    /* Main content: two columns */
-    .label-main {
-      flex: 1;
-      display: grid;
-      grid-template-columns: 2.4in 1fr;
-      gap: 0;
-      min-height: 0;
-    }
+ /* Main content: two columns */
+ .label-main {
+ flex: 1;
+ display: grid;
+ grid-template-columns: 2.5in 1fr;
+ gap: 0;
+ min-height: 0;
+ }
 
-    /* ── Left column: identity ───────────────────────────── */
-    .label-identity {
-      padding: 14px 16px 12px 18px;
-      display: flex;
-      flex-direction: column;
-      border-right: 1px solid #e8e8e8;
-    }
+ /* ── Left column: identity ───────────────────────────── */
+ .label-identity {
+ padding: 14px 16px 12px 18px;
+ display: flex;
+ flex-direction: column;
+ border-right: 3px solid #e8e8e8;
+ }
 
-    .label-project {
-      font-size: 9.5px;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: #aaa;
-      margin-bottom: 8px;
-    }
+ .label-project {
+ font-size: 12px;
+ font-weight: 700;
+ letter-spacing: 0.2em;
+ text-transform: uppercase;
+ color: #aaa;
+ margin-bottom: 8px;
+ }
 
-    .label-name {
-      font-size: 27px;
-      font-weight: 900;
-      letter-spacing: -0.025em;
-      line-height: 1.1;
-      margin-bottom: 7px;
-    }
-    .nvidia .label-name { color: #2d5c00; }
-    .ati    .label-name { color: #8b1a12; }
+ .label-name {
+ font-size: 32px;
+ font-weight: 900;
+ letter-spacing: -0.025em;
+ line-height: 1.1;
+ margin-bottom: 6px;
+ }
+ .nvidia .label-name { color: #2d5c00; }
+ .ati .label-name { color: #8b1a12; }
 
-    .label-year {
-      font-size: 17px;
-      font-weight: 600;
-      color: #777;
-      margin-bottom: 10px;
-    }
+ .label-year {
+ font-size: 24px;
+ font-weight: 600;
+ color: #777;
+ margin-bottom: 10px;
+ }
 
-    .label-era {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #bbb;
-      line-height: 1.4;
-      margin-top: auto;
-    }
+ .label-era {
+ font-size: 10px;
+ font-weight: 600;
+ letter-spacing: 0.08em;
+ text-transform: uppercase;
+ color: #bbb;
+ line-height: 1.4;
+ margin-top: auto;
+ }
 
-    /* ── Right column: specs ─────────────────────────────── */
-    .label-specs {
-      padding: 14px 14px 12px 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      justify-content: space-between;
-    }
+ /* ── Right column: specs ─────────────────────────────── */
+ .label-specs {
+ padding: 14px 14px 12px 14px;
+ display: flex;
+ flex-direction: column;
+ gap: 0;
+ justify-content: space-between;
+ }
 
-    .spec-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      font-size: 13.5px;
-      padding-bottom: 8px;
-      border-bottom: 1px dotted #ebebeb;
-    }
-    .spec-row:last-child { border-bottom: none; padding-bottom: 0; }
+ .spec-row {
+ display: flex;
+ justify-content: space-between;
+ align-items: baseline;
+ font-size: 16px;
+ padding-bottom: 6px;
+ border-bottom: 3px dotted #ebebeb;
+ }
+ .spec-row:last-child { border-bottom: none; padding-bottom: 0; }
 
-    .spec-label { color: #aaa; font-weight: 500; }
-    .spec-value { font-weight: 700; color: #333; text-align: right; }
+ .spec-label { color: #aaa; font-weight: 500; }
+ .spec-value { font-weight: 700; color: #333; text-align: right; }
 
-    /* ── Bottom tap strip ────────────────────────────────── */
-    .label-tap {
-      height: 0.72in;
-      flex-shrink: 0;
-      border-top: 1px solid #e0e0e0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 18px 0 18px;
-      gap: 14px;
-    }
+ /* ── Bottom tap strip ────────────────────────────────── */
+ .label-tap {
+ height: 0.7in;
+ flex-shrink: 0;
+ border-top: 1px solid #e0e0e0;
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ padding: 0 18px 0 18px;
+ gap: 14px;
+ }
 
-    .tap-text {
-      font-size: 11.5px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #555;
-    }
+ .tap-text {
+ font-size: 10px;
+ font-weight: 600;
+ letter-spacing: 0.1em;
+ text-transform: uppercase;
+ color: #555;
+ }
 
-    /* Dotted line connecting text to circle */
-    .tap-line {
-      flex: 1;
-      border-bottom: 1.5px dashed #ddd;
-      margin: 0 8px;
-    }
+ /* Dotted line connecting text to circle */
+ .tap-line {
+ flex: 1;
+ border-bottom: 2px dashed #ddd;
+ margin: 0 8px;
+ }
 
-    /* Large NFC circle */
-    .tap-circle {
-      width: 58px;
-      height: 58px;
-      border: 2px solid #222;
-      border-radius: 50%;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-    .tap-circle::before {
-      content: '';
-      position: absolute;
-      width: 44px;
-      height: 44px;
-      border: 1.5px solid #bbb;
-      border-radius: 50%;
-    }
-    .tap-circle::after {
-      content: '';
-      position: absolute;
-      width: 30px;
-      height: 30px;
-      border: 1px solid #ddd;
-      border-radius: 50%;
-    }
-    .tap-circle-label {
-      font-size: 8.5px;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      z-index: 1;
-    }
+ /* Large NFC circle */
+ .tap-circle {
+ width: 58px;
+ height: 58px;
+ border: 2px solid #222;
+ border-radius: 50%;
+ flex-shrink: 0;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ position: relative;
+ }
+ .tap-circle::before {
+ content: '';
+ position: absolute;
+ width: 44px;
+ height: 44px;
+ border: 1.5px solid #bbb;
+ border-radius: 50%;
+ }
+ .tap-circle::after {
+ content: '';
+ position: absolute;
+ width: 30px;
+ height: 30px;
+ border: 1px solid #ddd;
+ border-radius: 50%;
+ }
+ .tap-circle-label {
+ font-size: 8.5px;
+ font-weight: 800;
+ letter-spacing: 0.1em;
+ text-transform: uppercase;
+ z-index: 1;
+ }
 
-    .nvidia .label-tap { background: #fafff5; }
-    .nvidia .tap-circle { border-color: #2d5c00; }
-    .nvidia .tap-circle::before { border-color: #7cb800; }
-    .nvidia .tap-circle-label { color: #2d5c00; }
+ .nvidia .label-tap { background: #fafff5; }
+ .nvidia .tap-circle { border-color: #2d5c00; }
+ .nvidia .tap-circle::before { border-color: #7cb800; }
+ .nvidia .tap-circle-label { color: #2d5c00; }
 
-    .ati .label-tap { background: #fff8f8; }
-    .ati .tap-circle { border-color: #8b1a12; }
-    .ati .tap-circle::before { border-color: #c44; }
-    .ati .tap-circle-label { color: #8b1a12; }
+ .ati .label-tap { background: #fff8f8; }
+ .ati .tap-circle { border-color: #8b1a12; }
+ .ati .tap-circle::before { border-color: #c44; }
+ .ati .tap-circle-label { color: #8b1a12; }
 
-    /* Screen preview */
-    @media screen {
-      body { padding: 32px; background: #e8e8e8; }
-      .label { background: #fff; box-shadow: 0 2px 14px rgba(0,0,0,0.13); }
-      .print-note {
-        text-align: center;
-        font-size: 11px;
-        color: #aaa;
-        margin-top: 20px;
-        font-style: italic;
-      }
-    }
+ /* Screen preview */
+ @media screen {
+ body { padding: 32px; background: #e8e8e8; }
+ .label { background: #fff; box-shadow: 0 2px 14px rgba(0,0,0,0.13); }
+ .print-note {
+ text-align: center;
+ font-size: 11px;
+ color: #aaa;
+ margin-top: 20px;
+ font-style: italic;
+ }
+ }
 
-    @media print {
-      body { background: white; padding: 0; }
-      .print-note { display: none; }
-    }
-  </style>
+ @media print {
+ body { background: white; padding: 0; }
+ .print-note { display: none; }
+ }
+ </style>
 </head>
 <body>
 
 <!-- Page 1 -->
 <div class="page">
 
-  <div class="label nvidia">
-    <div class="label-bar"></div>
-    <div class="label-main">
-      <div class="label-identity">
-        <div class="label-project">Artifact · NVIDIA</div>
-        <div class="label-name">GeForce FX 5600</div>
-        <div class="label-year">2003</div>
-        <div class="label-era">Act I — The DirectX 9 Wars</div>
-      </div>
-      <div class="label-specs">
-        <div class="spec-row"><span class="spec-label">Transistors</span><span class="spec-value">63 million</span></div>
-        <div class="spec-row"><span class="spec-label">Memory</span><span class="spec-value">256MB DDR</span></div>
-        <div class="spec-row"><span class="spec-label">Interface</span><span class="spec-value">AGP 8x</span></div>
-        <div class="spec-row"><span class="spec-label">DirectX</span><span class="spec-value">DirectX 9</span></div>
-        <div class="spec-row"><span class="spec-label">Performance</span><span class="spec-value">~25 GFLOPS</span></div>
-      </div>
-    </div>
-    <div class="label-tap">
-      <span class="tap-text">Tap your phone here to learn more</span>
-      <div class="tap-line"></div>
-      <div class="tap-circle"><span class="tap-circle-label">TAP</span></div>
-    </div>
-  </div>
+ <div class="label nvidia">
+ <div class="label-bar"></div>
+ <div class="label-main">
+ <div class="label-identity">
+ <div class="label-project">Artifact · NVIDIA</div>
+ <div class="label-name">GeForce FX 5600</div>
+ <div class="label-year">2003</div>
+ <div class="label-era">The DirectX 9 Wars</div>
+ </div>
+ <div class="label-specs">
+ <div class="spec-row"><span class="spec-label">Transistors</span><span class="spec-value">63 million</span></div>
+ <div class="spec-row"><span class="spec-label">Memory</span><span class="spec-value">256MB DDR</span></div>
+ <div class="spec-row"><span class="spec-label">Interface</span><span class="spec-value">AGP 8x</span></div>
+ <div class="spec-row"><span class="spec-label">DirectX</span><span class="spec-value">DirectX 9</span></div>
+ <div class="spec-row"><span class="spec-label">Performance</span><span class="spec-value">~25 GFLOPS</span></div>
+ </div>
+ </div>
+ <div class="label-tap">
+ <span class="tap-text">Tap your phone here to learn more</span>
+ <div class="tap-line"></div>
+ <div class="tap-circle"><span class="tap-circle-label">TAP</span></div>
+ </div>
+ </div>
 
-  <div class="label ati">
-    <div class="label-bar"></div>
-    <div class="label-main">
-      <div class="label-identity">
-        <div class="label-project">Artifact · ATI</div>
-        <div class="label-name">Radeon 9550</div>
-        <div class="label-year">2004</div>
-        <div class="label-era">Act I — The DirectX 9 Wars</div>
-      </div>
-      <div class="label-specs">
-        <div class="spec-row"><span class="spec-label">Transistors</span><span class="spec-value">75 million</span></div>
-        <div class="spec-row"><span class="spec-label">Memory</span><span class="spec-value">256MB DDR</span></div>
-        <div class="spec-row"><span class="spec-label">Interface</span><span class="spec-value">AGP 8x</span></div>
-        <div class="spec-row"><span class="spec-label">DirectX</span><span class="spec-value">DirectX 9</span></div>
-        <div class="spec-row"><span class="spec-label">Performance</span><span class="spec-value">~20 GFLOPS</span></div>
-      </div>
-    </div>
-    <div class="label-tap">
-      <span class="tap-text">Tap your phone here to learn more</span>
-      <div class="tap-line"></div>
-      <div class="tap-circle"><span class="tap-circle-label">TAP</span></div>
-    </div>
-  </div>
+ <div class="label ati">
+ <div class="label-bar"></div>
+ <div class="label-main">
+ <div class="label-identity">
+ <div class="label-project">Artifact · ATI</div>
+ <div class="label-name">Radeon 9550</div>
+ <div class="label-year">2004</div>
+ <div class="label-era">The DirectX 9 Wars</div>
+ </div>
+ <div class="label-specs">
+ <div class="spec-row"><span class="spec-label">Transistors</span><span class="spec-value">75 million</span></div>
+ <div class="spec-row"><span class="spec-label">Memory</span><span class="spec-value">256MB DDR</span></div>
+ <div class="spec-row"><span class="spec-label">Interface</span><span class="spec-value">AGP 8x</span></div>
+ <div class="spec-row"><span class="spec-label">DirectX</span><span class="spec-value">DirectX 9</span></div>
+ <div class="spec-row"><span class="spec-label">Performance</span><span class="spec-value">~20 GFLOPS</span></div>
+ </div>
+ </div>
+ <div class="label-tap">
+ <span class="tap-text">Tap your phone here to learn more</span>
+ <div class="tap-line"></div>
+ <div class="tap-circle"><span class="tap-circle-label">TAP</span></div>
+ </div>
+ </div>
 
 </div>
 
 <!-- Page 2 -->
 <div class="page">
 
-  <div class="label nvidia">
-    <div class="label-bar"></div>
-    <div class="label-main">
-      <div class="label-identity">
-        <div class="label-project">Artifact · NVIDIA</div>
-        <div class="label-name">GeForce 7800 GS</div>
-        <div class="label-year">2006</div>
-        <div class="label-era">Act II — AGP's Last Stand</div>
-      </div>
-      <div class="label-specs">
-        <div class="spec-row"><span class="spec-label">Transistors</span><span class="spec-value">302 million</span></div>
-        <div class="spec-row"><span class="spec-label">Memory</span><span class="spec-value">256MB GDDR3</span></div>
-        <div class="spec-row"><span class="spec-label">Interface</span><span class="spec-value">AGP 8x</span></div>
-        <div class="spec-row"><span class="spec-label">DirectX</span><span class="spec-value">DirectX 9c</span></div>
-        <div class="spec-row"><span class="spec-label">Performance</span><span class="spec-value">~96 GFLOPS</span></div>
-      </div>
-    </div>
-    <div class="label-tap">
-      <span class="tap-text">Tap your phone here to learn more</span>
-      <div class="tap-line"></div>
-      <div class="tap-circle"><span class="tap-circle-label">TAP</span></div>
-    </div>
-  </div>
+ <div class="label nvidia">
+ <div class="label-bar"></div>
+ <div class="label-main">
+ <div class="label-identity">
+ <div class="label-project">Artifact · NVIDIA</div>
+ <div class="label-name">GeForce 7800 GS</div>
+ <div class="label-year">2006</div>
+ <div class="label-era">AGP's Last Stand</div>
+ </div>
+ <div class="label-specs">
+ <div class="spec-row"><span class="spec-label">Transistors</span><span class="spec-value">302 million</span></div>
+ <div class="spec-row"><span class="spec-label">Memory</span><span class="spec-value">256MB GDDR3</span></div>
+ <div class="spec-row"><span class="spec-label">Interface</span><span class="spec-value">AGP 8x</span></div>
+ <div class="spec-row"><span class="spec-label">DirectX</span><span class="spec-value">DirectX 9c</span></div>
+ <div class="spec-row"><span class="spec-label">Performance</span><span class="spec-value">~96 GFLOPS</span></div>
+ </div>
+ </div>
+ <div class="label-tap">
+ <span class="tap-text">Tap your phone here to learn more</span>
+ <div class="tap-line"></div>
+ <div class="tap-circle"><span class="tap-circle-label">TAP</span></div>
+ </div>
+ </div>
 
-  <div class="label ati">
-    <div class="label-bar"></div>
-    <div class="label-main">
-      <div class="label-identity">
-        <div class="label-project">Artifact · AMD / ATI</div>
-        <div class="label-name">Radeon HD 2900 XT</div>
-        <div class="label-year">2007</div>
-        <div class="label-era">Act III — A New Slot, A New War</div>
-      </div>
-      <div class="label-specs">
-        <div class="spec-row"><span class="spec-label">Transistors</span><span class="spec-value">700 million</span></div>
-        <div class="spec-row"><span class="spec-label">Memory</span><span class="spec-value">512MB GDDR4</span></div>
-        <div class="spec-row"><span class="spec-label">Interface</span><span class="spec-value">PCIe 2.0 x16</span></div>
-        <div class="spec-row"><span class="spec-label">DirectX</span><span class="spec-value">DirectX 10</span></div>
-        <div class="spec-row"><span class="spec-label">Performance</span><span class="spec-value">~475 GFLOPS</span></div>
-      </div>
-    </div>
-    <div class="label-tap">
-      <span class="tap-text">Tap your phone here to learn more</span>
-      <div class="tap-line"></div>
-      <div class="tap-circle"><span class="tap-circle-label">TAP</span></div>
-    </div>
-  </div>
+ <div class="label ati">
+ <div class="label-bar"></div>
+ <div class="label-main">
+ <div class="label-identity">
+ <div class="label-project">Artifact · AMD / ATI</div>
+ <div class="label-name">Radeon HD 2900 XT</div>
+ <div class="label-year">2007</div>
+ <div class="label-era">A New Slot, A New War</div>
+ </div>
+ <div class="label-specs">
+ <div class="spec-row"><span class="spec-label">Transistors</span><span class="spec-value">700 million</span></div>
+ <div class="spec-row"><span class="spec-label">Memory</span><span class="spec-value">512MB GDDR4</span></div>
+ <div class="spec-row"><span class="spec-label">Interface</span><span class="spec-value">PCIe 2.0 x16</span></div>
+ <div class="spec-row"><span class="spec-label">DirectX</span><span class="spec-value">DirectX 10</span></div>
+ <div class="spec-row"><span class="spec-label">Performance</span><span class="spec-value">~475 GFLOPS</span></div>
+ </div>
+ </div>
+ <div class="label-tap">
+ <span class="tap-text">Tap your phone here to learn more</span>
+ <div class="tap-line"></div>
+ <div class="tap-circle"><span class="tap-circle-label">TAP</span></div>
+ </div>
+ </div>
 
 </div>
 
 <!-- Page 3 -->
 <div class="page">
 
-  <div class="label ati">
-    <div class="label-bar"></div>
-    <div class="label-main">
-      <div class="label-identity">
-        <div class="label-project">Artifact · AMD</div>
-        <div class="label-name">Radeon HD 5750</div>
-        <div class="label-year">2009</div>
-        <div class="label-era">Act IV — The New World</div>
-      </div>
-      <div class="label-specs">
-        <div class="spec-row"><span class="spec-label">Transistors</span><span class="spec-value">1.04 billion</span></div>
-        <div class="spec-row"><span class="spec-label">Memory</span><span class="spec-value">1GB GDDR5</span></div>
-        <div class="spec-row"><span class="spec-label">Interface</span><span class="spec-value">PCIe 2.0 x16</span></div>
-        <div class="spec-row"><span class="spec-label">DirectX</span><span class="spec-value">DirectX 11</span></div>
-        <div class="spec-row"><span class="spec-label">Performance</span><span class="spec-value">~900 GFLOPS</span></div>
-      </div>
-    </div>
-    <div class="label-tap">
-      <span class="tap-text">Tap your phone here to learn more</span>
-      <div class="tap-line"></div>
-      <div class="tap-circle"><span class="tap-circle-label">TAP</span></div>
-    </div>
-  </div>
+ <div class="label ati">
+ <div class="label-bar"></div>
+ <div class="label-main">
+ <div class="label-identity">
+ <div class="label-project">Artifact · AMD</div>
+ <div class="label-name">Radeon HD 5750</div>
+ <div class="label-year">2009</div>
+ <div class="label-era">The New World</div>
+ </div>
+ <div class="label-specs">
+ <div class="spec-row"><span class="spec-label">Transistors</span><span class="spec-value">1.04 billion</span></div>
+ <div class="spec-row"><span class="spec-label">Memory</span><span class="spec-value">1GB GDDR5</span></div>
+ <div class="spec-row"><span class="spec-label">Interface</span><span class="spec-value">PCIe 2.0 x16</span></div>
+ <div class="spec-row"><span class="spec-label">DirectX</span><span class="spec-value">DirectX 11</span></div>
+ <div class="spec-row"><span class="spec-label">Performance</span><span class="spec-value">~900 GFLOPS</span></div>
+ </div>
+ </div>
+ <div class="label-tap">
+ <span class="tap-text">Tap your phone here to learn more</span>
+ <div class="tap-line"></div>
+ <div class="tap-circle"><span class="tap-circle-label">TAP</span></div>
+ </div>
+ </div>
 
-  <div class="label nvidia">
-    <div class="label-bar"></div>
-    <div class="label-main">
-      <div class="label-identity">
-        <div class="label-project">Artifact · NVIDIA</div>
-        <div class="label-name">GeForce GTX 760 FTW</div>
-        <div class="label-year">2013</div>
-        <div class="label-era">Act V — The Compute Era</div>
-      </div>
-      <div class="label-specs">
-        <div class="spec-row"><span class="spec-label">Transistors</span><span class="spec-value">3.54 billion</span></div>
-        <div class="spec-row"><span class="spec-label">Memory</span><span class="spec-value">4GB GDDR5</span></div>
-        <div class="spec-row"><span class="spec-label">Interface</span><span class="spec-value">PCIe 3.0 x16</span></div>
-        <div class="spec-row"><span class="spec-label">DirectX</span><span class="spec-value">DX11 / CUDA</span></div>
-        <div class="spec-row"><span class="spec-label">Performance</span><span class="spec-value">2.26 TFLOPS</span></div>
-      </div>
-    </div>
-    <div class="label-tap">
-      <span class="tap-text">Tap your phone here to learn more</span>
-      <div class="tap-line"></div>
-      <div class="tap-circle"><span class="tap-circle-label">TAP</span></div>
-    </div>
-  </div>
+ <div class="label nvidia">
+ <div class="label-bar"></div>
+ <div class="label-main">
+ <div class="label-identity">
+ <div class="label-project">Artifact · NVIDIA</div>
+ <div class="label-name">GeForce GTX 760 FTW</div>
+ <div class="label-year">2013</div>
+ <div class="label-era">The Compute Era Begins</div>
+ </div>
+ <div class="label-specs">
+ <div class="spec-row"><span class="spec-label">Transistors</span><span class="spec-value">3.54 billion</span></div>
+ <div class="spec-row"><span class="spec-label">Memory</span><span class="spec-value">4GB GDDR5</span></div>
+ <div class="spec-row"><span class="spec-label">Interface</span><span class="spec-value">PCIe 3.0 x16</span></div>
+ <div class="spec-row"><span class="spec-label">DirectX</span><span class="spec-value">DX11 / CUDA</span></div>
+ <div class="spec-row"><span class="spec-label">Performance</span><span class="spec-value">2.26 TFLOPS</span></div>
+ </div>
+ </div>
+ <div class="label-tap">
+ <span class="tap-text">Tap your phone here to learn more</span>
+ <div class="tap-line"></div>
+ <div class="tap-circle"><span class="tap-circle-label">TAP</span></div>
+ </div>
+ </div>
 
 </div>
 
