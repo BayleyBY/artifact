@@ -12,6 +12,12 @@
  *   - 20% infill
  *   - No supports needed (print with back face on the bed)
  *   - Layer height: 0.2mm
+ *
+ * NFC chip:
+ *   A circular recess in the 45° face holds the NFC sticker flush.
+ *   The label slides in front of it; the printed TAP circle aligns over it.
+ *   Chip diameter: 30mm. Recess is 31mm wide × 1mm deep.
+ *   Recess is positioned at the right end of the holder (see nfc_pocket below).
  */
 
 $fn = 60;
@@ -37,6 +43,14 @@ cbore_d        = 7.5;    // counterbore diameter (fits screw head flush)
 cbore_h        = 3.5;    // counterbore depth
 screw_inset    = 20;     // distance from ends to screw hole centers
 
+nfc_d          = 31;     // NFC recess diameter (30mm chip + 0.5mm clearance)
+nfc_depth      = 1.2;    // recess depth (NFC stickers are ~0.4-0.8mm thick)
+// NFC pocket position on the 45° face:
+//   Along the face (from slot/label bottom edge): ~9mm up  ← center of tap strip
+//   Along Y (from right end of label): ~22mm in           ← right side of tap zone
+nfc_face_pos   = slot_from_tip + 9;   // mm along 45° face from lower tip
+nfc_y_from_end = 22;                  // mm from the right end of the holder
+
 
 // ── Derived values ────────────────────────────────────────────────────────────
 
@@ -55,6 +69,7 @@ difference() {
     holder_body();
     label_slot();
     screw_holes();
+    nfc_pocket();
 }
 
 
@@ -101,6 +116,33 @@ module label_slot() {
     rotate([0, 135, 0])
     translate([-slot_thickness / 2, 0, 0])
     cube([slot_thickness, holder_l + 2, slot_depth]);
+}
+
+
+// ── NFC pocket ───────────────────────────────────────────────────────────────
+//
+// Circular recess in the 45° face sized for the 30mm NFC sticker.
+// The label slides in front of it, hiding the chip.
+// The printed TAP circle on the label should align over this pocket.
+//
+// Position:
+//   nfc_face_pos mm along the 45° face from the lower tip  (matches tap strip height)
+//   nfc_y_from_end mm from the right end of the holder     (matches tap circle X)
+//
+// If alignment is off after printing, adjust nfc_face_pos and nfc_y_from_end.
+
+module nfc_pocket() {
+    // Center on 45° face in XZ:
+    nfc_cx = ramp - nfc_face_pos * inv_sqrt2;
+    nfc_cz = nfc_face_pos * inv_sqrt2;
+
+    // Y position: right end of holder minus offset
+    nfc_y = holder_l - nfc_y_from_end;
+
+    translate([nfc_cx, nfc_y, nfc_cz])
+    rotate([0, 135, 0])          // same inward-normal rotation as the slot
+    rotate([0, 0, 0])
+    cylinder(d = nfc_d, h = nfc_depth + 0.1);
 }
 
 
