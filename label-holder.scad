@@ -18,7 +18,7 @@ $fn = 60;
 
 // ── Parameters ───────────────────────────────────────────────────────────────
 
-label_w  = 152.4;  // 6 inches
+label_w  = 127.0;  // 5 inches
 tilt     = 35;     // degrees from vertical (wall) — label leans at this angle
 
 holder_l = label_w + 20;  // Z length — label has 10mm overhang each side
