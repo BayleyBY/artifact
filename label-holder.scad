@@ -2,126 +2,154 @@
  * Artifact — Label Placard Holder
  * =================================
  * Wall-mounted holder for 6"×3" (152.4mm × 76.2mm) printed labels.
- * Label slots in from the side (along Z) and rests on the 45° face.
+ * Label face sits at 35° from the wall. Label slides in from either end.
+ * 30mm NFC chip recess on the label face.
  *
  * Coordinate system:
- *   X = depth from wall (0 = wall face, ramp = furthest point)
- *   Y = height          (0 = bottom, ramp = top)
- *   Z = length          (0 to holder_l, along the label's width)
+ *   X = depth from wall  (0 = wall surface)
+ *   Y = height           (0 = bottom)
+ *   Z = length           (label slides along this axis)
  *
- * Mounting: two countersunk screws through the back face (X=0) into wall.
- *
- * Print: PLA/PETG, 20% infill, back face (X=0) flat on the bed, no supports.
+ * Print: PLA/PETG, 20% infill, back face (X=0) flat on bed, no supports needed.
+ * Mount: 2× wood screws or M3.5 through the back face.
  */
 
 $fn = 60;
 
 // ── Parameters ───────────────────────────────────────────────────────────────
 
-label_w     = 152.4;  // label width (6 inches)
-ramp        = 52;     // triangle leg — depth from wall and height (mm)
-holder_l    = label_w + 22;  // total Z length (11mm overhang each end)
+label_w  = 152.4;  // 6 inches
+tilt     = 35;     // degrees from vertical (wall) — label leans at this angle
 
-slot_t      = 2.5;   // slot opening thickness (cardstock ~0.5mm; laminate ~1.2mm)
-slot_d      = 12;    // slot depth — must stay below: slot_pos (currently safe at 12<20)
-slot_pos    = 20;    // distance along 45° face from lower tip to slot center
-                      // increasing this moves the slot up the face
+holder_l = label_w + 20;  // Z length — label has 10mm overhang each side
 
-screw_d     = 3.5;   // screw shank diameter
-cbore_d     = 7.5;   // countersink (screw head) diameter
-cbore_h     = 3.5;   // countersink depth
-screw_inset = 20;    // screw hole inset from each end
+plate_t  = 8;   // wall plate thickness (X)
+arm_h    = 85;  // arm face length (mm along the face itself)
 
-nfc_d       = 31;    // NFC recess diameter (30mm chip + clearance)
-nfc_depth   = 1.2;   // NFC recess depth
-nfc_face_pos = slot_pos + 9;  // along face from tip — lands in label's tap strip
-nfc_z_from_end = 31; // from right end of holder — aligns with TAP circle on label
+slot_t   = 1.5;  // slot opening thickness — tight fit for cardstock
+slot_d   = 10;   // slot depth into body
+
+screw_d  = 3.5;
+cbore_d  = 7.5;
+cbore_h  = 3.5;
+
+nfc_d    = 31;   // NFC recess diameter (30mm chip + 0.5mm clearance)
+nfc_dep  = 1.5;  // NFC recess depth
+
+// NFC position:
+nfc_along = 25;         // mm up the arm face from the bottom
+nfc_z     = holder_l - 30;  // mm from Z=0 end (right side of label when mounted)
 
 // ── Derived ──────────────────────────────────────────────────────────────────
 
-s2 = 1 / sqrt(2);
+s = sin(tilt);   // sin 35° ≈ 0.574
+c = cos(tilt);   // cos 35° ≈ 0.819
+
+body_h = arm_h * c;  // total height of holder
+
+// ── Body cross-section (XY polygon, extruded along Z) ────────────────────────
+//
+// Viewed from the end:
+//
+//   Y (height)
+//   |
+//   *──────────────* [arm_h*s + plate_t, arm_h*c]   ← arm top
+//   |              /
+//   |             /  ← arm face at 35° from vertical (label rests here)
+//   |            /
+//   |           /
+//   *──────────* [plate_t, 0]  ← bottom of arm face / front of wall plate
+//   [0,0]
+//
+//   Back face (X=0): mounts flush to wall
+//   Bottom (Y=0): horizontal floor of holder
+//   Arm face: angled at 35° — this is where the label rests
+
+module body() {
+    linear_extrude(holder_l) {
+        polygon([
+            [0,              0      ],   // back-bottom
+            [plate_t,        0      ],   // front-bottom (wall plate edge)
+            [plate_t + arm_h*s, arm_h*c],   // arm top-front
+            [0,              arm_h*c]    // back-top
+        ]);
+    }
+}
+
+// ── Label slot ───────────────────────────────────────────────────────────────
+//
+// A thin channel cut along the full Z length at the base of the arm face.
+// The label's bottom edge slides into this channel from either end.
+//
+// The slot center is `slot_from_base` mm up the arm face from its bottom corner.
+// Direction of cut: perpendicular to arm face = inward normal [-c, s, 0] in XY.
+//
+// We define the slot as a cube in the arm face's local coordinate frame:
+//   - Local "depth" axis (into body):  [-c, s] in XY  → rotate 90°+tilt from X
+//   - Local "width" axis (along face): [ s, c] in XY
+//   - Local "length" axis:             Z (unchanged)
+//
+// rotate([0, 0, 90+tilt]) then rotate([0, 90, 0]) aligns local Z with inward [-c,s,0]
+
+slot_from_base = 5;  // mm up the arm face from its bottom corner [plate_t, 0]
+
+module label_slot() {
+    // Center of slot on the arm face in XY:
+    cx = plate_t + slot_from_base * s;
+    cy =           slot_from_base * c;
+
+    // Small outward nudge so the cutter cleanly breaks through the face:
+    ox = 0.1 * c;
+    oy = -0.1 * s;
+
+    translate([cx + ox, cy + oy, -1])
+    rotate([0, 0, 90 + tilt])   // align local Y with face direction [s, c]
+    rotate([0, 90, 0])          // local Z → local X (depth axis = inward normal)
+    translate([-slot_d, -slot_t/2, 0])
+    cube([slot_d + 0.1, slot_t, holder_l + 2]);
+}
+
+// ── NFC recess ───────────────────────────────────────────────────────────────
+//
+// Circular pocket on the arm face. Same rotation as the slot.
+// Placed at nfc_along mm up the face and nfc_z along Z.
+
+module nfc_recess() {
+    cx = plate_t + nfc_along * s;
+    cy =           nfc_along * c;
+
+    ox = 0.1 * c;
+    oy = -0.1 * s;
+
+    translate([cx + ox, cy + oy, nfc_z])
+    rotate([0, 0, 90 + tilt])
+    rotate([0, 90, 0])
+    translate([0, 0, -0.1])
+    cylinder(d = nfc_d, h = nfc_dep + 0.2);
+}
+
+// ── Screw holes ──────────────────────────────────────────────────────────────
+//
+// Two countersunk holes through the back face (X=0), one near each Z end.
+// rotate([0, 90, 0]) → cylinder axis along +X (into the body toward the wall).
+
+module screw_holes() {
+    screw_y = body_h * 0.5;  // midpoint of back face height
+
+    for (z_pos = [20, holder_l - 20]) {
+        translate([-1, screw_y, z_pos])
+        rotate([0, 90, 0]) {
+            cylinder(d = screw_d, h = plate_t + 2);   // through hole
+            cylinder(d = cbore_d, h = cbore_h + 1);   // countersink
+        }
+    }
+}
 
 // ── Assembly ─────────────────────────────────────────────────────────────────
 
 difference() {
     body();
     label_slot();
+    nfc_recess();
     screw_holes();
-    nfc_pocket();
-}
-
-// ── Body ─────────────────────────────────────────────────────────────────────
-//
-//   Y (height)
-//   |
-//   * [0, ramp]   ← wall, top
-//   |\
-//   | \           ← 45° face: label rests here
-//   |  \
-//   *───* ← [0,0] wall/floor     [ramp,0] front tip
-//
-//   Extruded along Z (label length direction).
-
-module body() {
-    linear_extrude(holder_l) {
-        polygon([[0, 0], [ramp, 0], [0, ramp]]);
-    }
-}
-
-// ── Label slot ───────────────────────────────────────────────────────────────
-//
-// A thin groove cut into the 45° face, running the full Z length.
-// The label slides in from either end along Z.
-//
-// Method: translate to the slot center on the 45° face, rotate 135° around Z
-// so that the cube's local +Y axis points in the inward face-normal direction
-// [-s2, -s2, 0], then cut a cube of [slot_t × slot_d × holder_l].
-//
-//   rotate([0,0,135]):
-//     local +X → world [-s2, +s2, 0]  (along face direction)
-//     local +Y → world [-s2, -s2, 0]  (INTO body — inward normal ✓)
-
-module label_slot() {
-    // Center of slot on the 45° face in XY:
-    cx = ramp - slot_pos * s2;   // ≈ 37.86 with defaults
-    cy = slot_pos * s2;          // ≈ 14.14 with defaults
-
-    translate([cx, cy, -1])
-    rotate([0, 0, 135])
-    translate([-slot_t / 2, -0.1, 0])  // center width; -0.1 ensures clean face cut
-    cube([slot_t, slot_d + 0.1, holder_l + 2]);
-}
-
-// ── Screw holes ──────────────────────────────────────────────────────────────
-//
-// Countersunk holes in the back face (X=0).
-// rotate([0, 90, 0]) → cylinder axis goes along +X (into the body).
-
-module screw_holes() {
-    screw_y = ramp * 0.42;
-    for (z_pos = [screw_inset, holder_l - screw_inset]) {
-        translate([-1, screw_y, z_pos])
-        rotate([0, 90, 0]) {
-            cylinder(d = screw_d, h = ramp * 0.6 + 2);
-            cylinder(d = cbore_d, h = cbore_h + 1);
-        }
-    }
-}
-
-// ── NFC pocket ───────────────────────────────────────────────────────────────
-//
-// Circular recess on the 45° face. Same rotation as the slot (135° around Z),
-// then tilt the cylinder to go along the inward normal (+Y local = inward).
-// rotate([-90, 0, 0]) tilts the cylinder from +Z to +Y (local coords).
-
-module nfc_pocket() {
-    cx = ramp - nfc_face_pos * s2;
-    cy = nfc_face_pos * s2;
-    z_pos = holder_l - nfc_z_from_end;
-
-    translate([cx, cy, z_pos])
-    rotate([0, 0, 135])
-    rotate([-90, 0, 0])
-    translate([0, 0, -0.1])  // start slightly outside face for clean cut
-    cylinder(d = nfc_d, h = nfc_depth + 0.2);
 }
