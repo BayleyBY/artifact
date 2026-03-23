@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Radeon HD 5750 — Artifact</title>
+  <title>Radeon RX 5700 XT — Artifact</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -11,20 +11,16 @@
 
   <header class="card-header">
     <div class="card-maker ati">AMD</div>
-    <div class="card-name">Radeon HD 5750</div>
+    <div class="card-name">Radeon RX 5700 XT</div>
     <div class="card-meta">
-      <span>2009</span>
-      <span>PCIe 2.0</span>
-      <span>DirectX 11</span>
+      <span>2019</span>
+      <span>PCIe 4.0</span>
+      <span>DirectX 12</span>
     </div>
-    <div class="card-era">Act IV — The New World</div>
+    <div class="card-era">Act VI — The Comeback</div>
   </header>
 
-  <div class="card-photo"><img src="images/hd5750.jpg" alt="hd5750"></div>
-
-  
-
-  
+  <div class="card-photo"><img src="images/rx5700xt.jpg" alt="rx5700xt"></div>
 
   <section class="story">
     <div class="section-label">The story</div>
@@ -69,7 +65,7 @@
         <span class="collection-name">Radeon HD 2900 XT</span>
         <span class="collection-dot"></span>
       </a>
-      <a class="collection-item active" href="hd5750.html">
+      <a class="collection-item" href="hd5750.html">
         <span class="collection-year">2009</span>
         <span class="collection-name">Radeon HD 5750</span>
         <span class="collection-dot"></span>
@@ -79,13 +75,12 @@
         <span class="collection-name">GeForce GTX 760 FTW</span>
         <span class="collection-dot"></span>
       </a>
-    </div>
       <a class="collection-item" href="rtx2080.html">
         <span class="collection-year">2018</span>
         <span class="collection-name">GeForce RTX 2080</span>
         <span class="collection-dot"></span>
       </a>
-      <a class="collection-item" href="rx5700xt.html">
+      <a class="collection-item active" href="rx5700xt.html">
         <span class="collection-year">2019</span>
         <span class="collection-name">Radeon RX 5700 XT</span>
         <span class="collection-dot"></span>
@@ -98,29 +93,31 @@
 <script src="js/device.js"></script>
 <script>
 window.CARD_DATA = {
-  name: 'Radeon HD 5750',
-  tflops: 0.9,
-  powerWatts: 86,
+  name: 'Radeon RX 5700 XT',
+  tflops: 9.75,
+  powerWatts: 225,
   specs: [
-    { label: 'GPU',          value: 'Juniper XT' },
-    { label: 'Transistors',  value: '1.04 billion' },
-    { label: 'Memory',       value: '1GB GDDR5' },
-    { label: 'Memory bus',   value: '128-bit' },
-    { label: 'Interface',    value: 'PCIe 2.0 x16' },
-    { label: 'DirectX',      value: 'DirectX 11' },
-    { label: 'Performance',  value: '~900 GFLOPS' },
-    { label: 'Power draw',   value: '~86W' },
+    { label: 'GPU',          value: 'Navi 10 (RDNA 1)' },
+    { label: 'Transistors',  value: '10.3 billion' },
+    { label: 'Memory',       value: '8GB GDDR6' },
+    { label: 'Memory bus',   value: '256-bit' },
+    { label: 'Interface',    value: 'PCIe 4.0 x16' },
+    { label: 'DirectX',      value: 'DirectX 12' },
+    { label: 'Process',      value: '7nm TSMC' },
+    { label: 'Performance',  value: '9.75 TFLOPS' },
+    { label: 'Power draw',   value: '~225W' },
   ],
   games: [
-    { name: 'Call of Duty: Modern Warfare 2', year: 2009, note: 'Biggest entertainment launch of 2009 — $310M on its first day', trailer: 'https://www.youtube.com/results?search_query=Modern%20Warfare%202%20official%20trailer%202009' },
-    { name: 'Dragon Age: Origins', year: 2009, note: 'BioWare\'s return to deep RPG storytelling', trailer: 'https://www.youtube.com/results?search_query=Dragon%20Age%20Origins%20Sacred%20Ashes%20trailer' },
-    { name: 'Batman: Arkham Asylum', year: 2009, note: 'The superhero game that proved the genre could be taken seriously', trailer: 'https://www.youtube.com/results?search_query=Batman%20Arkham%20Asylum%202009%20official%20trailer' }
+    { name: 'Death Stranding', year: 2019, note: 'Hideo Kojima\'s walking simulator — photorealistic landscapes, demanding on every GPU', trailer: 'https://www.youtube.com/results?search_query=Death+Stranding+official+trailer+2019' },
+    { name: 'Red Dead Redemption 2', year: 2019, note: 'The most visually detailed open world ever built at the time — grass, weather, everything', trailer: 'https://www.youtube.com/results?search_query=Red+Dead+Redemption+2+PC+trailer+2019' },
+    { name: 'Doom Eternal', year: 2020, note: 'The game AMD optimized for — Vulkan renderer, 200fps if your card could handle it', trailer: 'https://www.youtube.com/results?search_query=Doom+Eternal+official+trailer+2020' }
   ],
   story: [
-    'Two years after the 2900 XT\'s stumble, AMD came back with something different. The HD 5750 was the first mainstream card to support <em>DirectX 11</em> — tessellation, hardware compute shaders, the foundations of modern rendering. AMD shipped it months before NVIDIA.',
-    'Notice the memory: 1GB of GDDR5. The card to its lower left had 512MB of GDDR4 and cost significantly more. This is what a healthy generation looks like — more, faster, cheaper.',
-    'The transistor count crossed one billion on this card. A milestone that would have been incomprehensible to the engineers who designed the FX 5600 six years earlier.',
-    'Now look at the size of it. Compare it to the 2900 XT below and to its left — shorter, lighter, one 6-pin connector instead of two. A 40nm chip that barely breaks a sweat. <em>This is what a process shrink feels like when it works.</em> The card got smaller, the transistor count went up, and the power bill went down. Everything moved in the right direction at once.'
+    'Look at the card to its left — the 2900 XT. Same company, twelve years apart. That card arrived late, ran hot, drew more power than it should, and lost to NVIDIA\'s 8800 GTX in nearly every benchmark. AMD spent the next decade trying to recover.',
+    'RDNA changed everything. Not incrementally — architecturally. AMD scrapped GCN, the compute-first design they\'d been iterating since 2011, and built RDNA around gaming: lower latency, better cache hierarchy, higher instructions-per-clock. <em>The 5700 XT was the proof.</em>',
+    'At launch it traded blows with NVIDIA\'s RTX 2070 Super at a lower price. For the first time since the HD 5000 series, AMD had a card that enthusiasts actually wanted. Not a consolation choice — a preference.',
+    'This is also the first card in this collection to use PCIe 4.0 — double the bandwidth of PCIe 3.0. The CPU side of the equation was finally keeping up with what GPUs could use.',
+    'The reference blower design (the one AMD shipped first) ran loud and hot — reviewers complained immediately. AMD\'s partners released custom coolers within weeks. The card that made it onto this wall is evidence of how fast that ecosystem moved. Twelve years after the 2900 XT, AMD had earned back the room to have opinions about cooling.'
   ]
 };
 </script>

@@ -3,28 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Radeon HD 5750 — Artifact</title>
+  <title>GeForce RTX 2080 — Artifact</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <div class="page">
 
   <header class="card-header">
-    <div class="card-maker ati">AMD</div>
-    <div class="card-name">Radeon HD 5750</div>
+    <div class="card-maker nvidia">NVIDIA</div>
+    <div class="card-name">GeForce RTX 2080</div>
     <div class="card-meta">
-      <span>2009</span>
-      <span>PCIe 2.0</span>
-      <span>DirectX 11</span>
+      <span>2018</span>
+      <span>PCIe 3.0</span>
+      <span>DirectX 12 / RTX</span>
     </div>
-    <div class="card-era">Act IV — The New World</div>
+    <div class="card-era">Act VI — Light Learns to Bounce</div>
   </header>
 
-  <div class="card-photo"><img src="images/hd5750.jpg" alt="hd5750"></div>
-
-  
-
-  
+  <div class="card-photo"><img src="images/rtx2080.jpg" alt="rtx2080"></div>
 
   <section class="story">
     <div class="section-label">The story</div>
@@ -69,7 +65,7 @@
         <span class="collection-name">Radeon HD 2900 XT</span>
         <span class="collection-dot"></span>
       </a>
-      <a class="collection-item active" href="hd5750.html">
+      <a class="collection-item" href="hd5750.html">
         <span class="collection-year">2009</span>
         <span class="collection-name">Radeon HD 5750</span>
         <span class="collection-dot"></span>
@@ -79,8 +75,7 @@
         <span class="collection-name">GeForce GTX 760 FTW</span>
         <span class="collection-dot"></span>
       </a>
-    </div>
-      <a class="collection-item" href="rtx2080.html">
+      <a class="collection-item active" href="rtx2080.html">
         <span class="collection-year">2018</span>
         <span class="collection-name">GeForce RTX 2080</span>
         <span class="collection-dot"></span>
@@ -98,29 +93,31 @@
 <script src="js/device.js"></script>
 <script>
 window.CARD_DATA = {
-  name: 'Radeon HD 5750',
-  tflops: 0.9,
-  powerWatts: 86,
+  name: 'GeForce RTX 2080',
+  tflops: 10.07,
+  powerWatts: 215,
   specs: [
-    { label: 'GPU',          value: 'Juniper XT' },
-    { label: 'Transistors',  value: '1.04 billion' },
-    { label: 'Memory',       value: '1GB GDDR5' },
-    { label: 'Memory bus',   value: '128-bit' },
-    { label: 'Interface',    value: 'PCIe 2.0 x16' },
-    { label: 'DirectX',      value: 'DirectX 11' },
-    { label: 'Performance',  value: '~900 GFLOPS' },
-    { label: 'Power draw',   value: '~86W' },
+    { label: 'GPU',          value: 'TU104 (Turing)' },
+    { label: 'Transistors',  value: '13.6 billion' },
+    { label: 'Memory',       value: '8GB GDDR6' },
+    { label: 'Memory bus',   value: '256-bit' },
+    { label: 'Interface',    value: 'PCIe 3.0 x16' },
+    { label: 'DirectX',      value: 'DirectX 12 / RTX' },
+    { label: 'Ray tracing',  value: '72 RT Cores' },
+    { label: 'Performance',  value: '10.07 TFLOPS' },
+    { label: 'Power draw',   value: '~215W' },
   ],
   games: [
-    { name: 'Call of Duty: Modern Warfare 2', year: 2009, note: 'Biggest entertainment launch of 2009 — $310M on its first day', trailer: 'https://www.youtube.com/results?search_query=Modern%20Warfare%202%20official%20trailer%202009' },
-    { name: 'Dragon Age: Origins', year: 2009, note: 'BioWare\'s return to deep RPG storytelling', trailer: 'https://www.youtube.com/results?search_query=Dragon%20Age%20Origins%20Sacred%20Ashes%20trailer' },
-    { name: 'Batman: Arkham Asylum', year: 2009, note: 'The superhero game that proved the genre could be taken seriously', trailer: 'https://www.youtube.com/results?search_query=Batman%20Arkham%20Asylum%202009%20official%20trailer' }
+    { name: 'Battlefield V', year: 2018, note: 'The first game to ship with DXR ray-traced reflections — barely playable, but real', trailer: 'https://www.youtube.com/results?search_query=Battlefield+V+ray+tracing+official+trailer+2018' },
+    { name: 'Control', year: 2019, note: 'The showcase game for RTX — ray-traced everything, brutalist architecture, flying furniture', trailer: 'https://www.youtube.com/results?search_query=Control+game+official+trailer+2019+RTX' },
+    { name: 'Cyberpunk 2077', year: 2020, note: 'The game that brought gaming PCs to their knees — and validated ray tracing for good', trailer: 'https://www.youtube.com/results?search_query=Cyberpunk+2077+official+trailer+2020' }
   ],
   story: [
-    'Two years after the 2900 XT\'s stumble, AMD came back with something different. The HD 5750 was the first mainstream card to support <em>DirectX 11</em> — tessellation, hardware compute shaders, the foundations of modern rendering. AMD shipped it months before NVIDIA.',
-    'Notice the memory: 1GB of GDDR5. The card to its lower left had 512MB of GDDR4 and cost significantly more. This is what a healthy generation looks like — more, faster, cheaper.',
-    'The transistor count crossed one billion on this card. A milestone that would have been incomprehensible to the engineers who designed the FX 5600 six years earlier.',
-    'Now look at the size of it. Compare it to the 2900 XT below and to its left — shorter, lighter, one 6-pin connector instead of two. A 40nm chip that barely breaks a sweat. <em>This is what a process shrink feels like when it works.</em> The card got smaller, the transistor count went up, and the power bill went down. Everything moved in the right direction at once.'
+    'For twenty years, every GPU rendered light the same way — by faking it. Rasterization is a brilliant trick: project geometry onto a 2D plane, fill in pixels, approximate shadows and reflections with clever hacks. It\'s fast. It\'s scalable. And it has never looked quite right.',
+    'The RTX 2080 changed that. NVIDIA\'s Turing architecture added dedicated silicon for ray tracing — <em>RT Cores</em> — purpose-built to trace rays of light through a 3D scene the way light actually behaves. Reflections that reflect. Shadows with correct penumbras. Global illumination without baking.',
+    'It was slow. Early ray-traced games ran at slideshow framerates unless you leaned hard on DLSS — NVIDIA\'s AI upscaler, also new in Turing — to fake the missing resolution back. Critics called it half-baked. They weren\'t wrong.',
+    'But the foundation was real. This card contains <em>dedicated AI processors</em> — Tensor Cores — that run neural networks at hardware speed. DLSS uses them to reconstruct a sharp image from a blurry one. It works. And it was the first sign that the GPU was becoming something more than a rendering engine.',
+    'Notice the size of it. Turing transistor counts are measured in the billions — 13.6 of them on this die. The card needs a new power connector that didn\'t exist when the FX 5600 was built. It draws more watts from the wall than some microwaves. And it fits in the same PCIe slot as every card to its left.'
   ]
 };
 </script>
