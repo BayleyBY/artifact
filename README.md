@@ -23,11 +23,11 @@ Over this era: **216× more transistors · 31× more memory · 400× more comput
 
 ### Wall layout
 
-Cards are arranged in a 3×2 grid, reading left-to-right, top-to-bottom in chronological order:
+Cards are arranged in a 4×2 grid, reading left-to-right, top-to-bottom in chronological order:
 
 ```
-Left Top:    FX 5600 (2003)       │  Middle Top:    7800 GS (2006)      │  Right Top:    HD 5750 (2009)
-Left Bottom: Radeon 9550 (2004)   │  Middle Bottom: HD 2900 XT (2007)   │  Right Bottom: GTX 760 FTW (2013)
+Col 1 Top:    FX 5600 (2003)       │  Col 2 Top:    7800 GS (2006)      │  Col 3 Top:    HD 5750 (2009)   │  Col 4 Top:    GTX 1080 Ti (2017)
+Col 1 Bottom: Radeon 9550 (2004)   │  Col 2 Bottom: HD 2900 XT (2007)   │  Col 3 Bottom: GTX 760 FTW (2013)  │  Col 4 Bottom: RTX 2080 (2018)
 ```
 
 ---
