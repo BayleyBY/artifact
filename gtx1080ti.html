@@ -3,28 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Radeon HD 5750 — Artifact</title>
+  <title>GeForce GTX 1080 Ti — Artifact</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <div class="page">
 
   <header class="card-header">
-    <div class="card-maker ati">AMD</div>
-    <div class="card-name">Radeon HD 5750</div>
+    <div class="card-maker nvidia">NVIDIA</div>
+    <div class="card-name">GeForce GTX 1080 Ti</div>
     <div class="card-meta">
-      <span>2009</span>
-      <span>PCIe 2.0</span>
-      <span>DirectX 11</span>
+      <span>2017</span>
+      <span>PCIe 3.0</span>
+      <span>DirectX 12</span>
     </div>
-    <div class="card-era">Act IV — The New World</div>
+    <div class="card-era">Act VI — Pascal's Peak</div>
   </header>
 
-  <div class="card-photo"><img src="images/hd5750.jpg" alt="hd5750"></div>
-
-  
-
-  
+  <div class="card-photo"><img src="images/gtx1080ti.jpg" alt="gtx1080ti"></div>
 
   <section class="story">
     <div class="section-label">The story</div>
@@ -69,7 +65,7 @@
         <span class="collection-name">Radeon HD 2900 XT</span>
         <span class="collection-dot"></span>
       </a>
-      <a class="collection-item active" href="hd5750.html">
+      <a class="collection-item" href="hd5750.html">
         <span class="collection-year">2009</span>
         <span class="collection-name">Radeon HD 5750</span>
         <span class="collection-dot"></span>
@@ -79,7 +75,7 @@
         <span class="collection-name">GeForce GTX 760 FTW</span>
         <span class="collection-dot"></span>
       </a>
-      <a class="collection-item" href="gtx1080ti.html">
+      <a class="collection-item active" href="gtx1080ti.html">
         <span class="collection-year">2017</span>
         <span class="collection-name">GeForce GTX 1080 Ti</span>
         <span class="collection-dot"></span>
@@ -102,29 +98,31 @@
 <script src="js/device.js"></script>
 <script>
 window.CARD_DATA = {
-  name: 'Radeon HD 5750',
-  tflops: 0.9,
-  powerWatts: 86,
+  name: 'GeForce GTX 1080 Ti',
+  tflops: 11.3,
+  powerWatts: 250,
   specs: [
-    { label: 'GPU',          value: 'Juniper XT' },
-    { label: 'Transistors',  value: '1.04 billion' },
-    { label: 'Memory',       value: '1GB GDDR5' },
-    { label: 'Memory bus',   value: '128-bit' },
-    { label: 'Interface',    value: 'PCIe 2.0 x16' },
-    { label: 'DirectX',      value: 'DirectX 11' },
-    { label: 'Performance',  value: '~900 GFLOPS' },
-    { label: 'Power draw',   value: '~86W' },
+    { label: 'GPU',          value: 'GP102 (Pascal)' },
+    { label: 'Transistors',  value: '12 billion' },
+    { label: 'Memory',       value: '11GB GDDR5X' },
+    { label: 'Memory bus',   value: '352-bit' },
+    { label: 'Interface',    value: 'PCIe 3.0 x16' },
+    { label: 'Process',      value: '16nm TSMC FinFET' },
+    { label: 'DirectX',      value: 'DirectX 12' },
+    { label: 'Performance',  value: '11.3 TFLOPS' },
+    { label: 'Power draw',   value: '~250W' },
   ],
   games: [
-    { name: 'Call of Duty: Modern Warfare 2', year: 2009, note: 'Biggest entertainment launch of 2009 — $310M on its first day', trailer: 'https://www.youtube.com/results?search_query=Modern%20Warfare%202%20official%20trailer%202009' },
-    { name: 'Dragon Age: Origins', year: 2009, note: 'BioWare\'s return to deep RPG storytelling', trailer: 'https://www.youtube.com/results?search_query=Dragon%20Age%20Origins%20Sacred%20Ashes%20trailer' },
-    { name: 'Batman: Arkham Asylum', year: 2009, note: 'The superhero game that proved the genre could be taken seriously', trailer: 'https://www.youtube.com/results?search_query=Batman%20Arkham%20Asylum%202009%20official%20trailer' }
+    { name: 'The Witcher 3: Wild Hunt', year: 2015, note: 'Finally ran at 4K / 60 fps on a single card. It took two years and this GPU to get there', trailer: 'https://www.youtube.com/results?search_query=The+Witcher+3+Wild+Hunt+official+trailer+2015' },
+    { name: 'Doom', year: 2016, note: "id Software's Vulkan comeback — consistently over 200 fps, the first time anyone had seen numbers like that on a game this beautiful", trailer: 'https://www.youtube.com/results?search_query=Doom+2016+official+reveal+trailer' },
+    { name: 'Battlefield 1', year: 2016, note: 'Frostbite at its visual peak — volumetric smoke, dynamic weather, destruction at a scale that demanded everything this card had', trailer: 'https://www.youtube.com/results?search_query=Battlefield+1+official+reveal+trailer+2016' }
   ],
   story: [
-    'Two years after the 2900 XT\'s stumble, AMD came back with something different. The HD 5750 was the first mainstream card to support <em>DirectX 11</em> — tessellation, hardware compute shaders, the foundations of modern rendering. AMD shipped it months before NVIDIA.',
-    'Notice the memory: 1GB of GDDR5. The card to its lower left had 512MB of GDDR4 and cost significantly more. This is what a healthy generation looks like — more, faster, cheaper.',
-    'The transistor count crossed one billion on this card. A milestone that would have been incomprehensible to the engineers who designed the FX 5600 six years earlier.',
-    'Now look at the size of it. Compare it to the 2900 XT below and to its left — shorter, lighter, one 6-pin connector instead of two. A 40nm chip that barely breaks a sweat. <em>This is what a process shrink feels like when it works.</em> The card got smaller, the transistor count went up, and the power bill went down. Everything moved in the right direction at once.'
+    'The era of "good enough" ended here. By 2017, NVIDIA\'s Pascal architecture had delivered something enthusiasts hadn\'t seen in years: a card that could run almost anything at 4K / 60 fps — not on paper, but in real games, without asterisks.',
+    'The GP102 die powering this card was originally designed for datacenters — NVIDIA\'s Tesla P100, built for AI researchers and HPC clusters. NVIDIA cut it down, kept the best 3,584 of its 3,840 CUDA cores, and sold it to gamers. Notice the memory: 11GB GDDR5X. Three years later, NVIDIA would ship the RTX 3080 — its next-generation flagship — with only 10GB. The 1080 Ti\'s memory budget outlasted the card itself.',
+    'The 250W power draw tells a different story than the same number on the 2900 XT a decade earlier. This card delivers <em>five times the compute</em> of the RTX 2080 Ti\'s direct predecessor — the GTX 1080 — at barely higher wattage. Fourteen times the TFLOPS of the GTX 760 on comparable power. That\'s what 16nm versus 28nm buys you.',
+    'This card held the title of fastest consumer GPU for nearly two years — an eternity in the GPU industry. When the RTX 2080 Ti finally arrived in 2018, it was only about 35% faster. Enthusiasts who bought the 1080 Ti felt no urgency to upgrade.',
+    'Look at the dual 8-pin power connectors. Look at the length of the card — it extends nearly the full width of the shadow box. The PCB alone is longer than many complete computers from the era the FX 5600 came from. And the actual GPU die, the chip that does the work, is about the size of a postage stamp. <em>Everything else is cooling it.</em>'
   ]
 };
 </script>

@@ -235,6 +235,21 @@
         <span class="collection-name">GeForce GTX 760 FTW</span>
         <span class="collection-dot"></span>
       </a>
+      <a class="collection-item" href="gtx1080ti.html">
+        <span class="collection-year">2017</span>
+        <span class="collection-name">GeForce GTX 1080 Ti</span>
+        <span class="collection-dot"></span>
+      </a>
+      <a class="collection-item" href="rtx2080.html">
+        <span class="collection-year">2018</span>
+        <span class="collection-name">GeForce RTX 2080</span>
+        <span class="collection-dot"></span>
+      </a>
+      <a class="collection-item" href="rx5700xt.html">
+        <span class="collection-year">2019</span>
+        <span class="collection-name">Radeon RX 5700 XT</span>
+        <span class="collection-dot"></span>
+      </a>
     </div>
   </nav>
 
@@ -249,6 +264,9 @@ const ALL_CARDS = [
   { year: 2007, name: 'Radeon HD 2900 XT',   tflops: 0.475  },
   { year: 2009, name: 'Radeon HD 5750',      tflops: 0.9    },
   { year: 2013, name: 'GeForce GTX 760 FTW', tflops: 2.26   },
+  { year: 2017, name: 'GeForce GTX 1080 Ti', tflops: 11.3   },
+  { year: 2018, name: 'GeForce RTX 2080',    tflops: 10.07  },
+  { year: 2019, name: 'Radeon RX 5700 XT',   tflops: 9.75   },
 ];
 
 const COMBINED_TFLOPS = ALL_CARDS.reduce((sum, c) => sum + c.tflops, 0); // ~3.776
