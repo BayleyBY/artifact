@@ -168,7 +168,7 @@
 
   <div class="conclusion-hero">
     <div class="section-label">The big picture</div>
-    <h1>What these six cards add up to</h1>
+    <h1>What these eight cards add up to</h1>
     <p>You've seen the individual comparisons. Here's the number that puts everything in perspective.</p>
   </div>
 
@@ -186,7 +186,7 @@
   <section class="essay">
     <div class="section-label">Where this leads</div>
     <div class="essay-body">
-      <p>The six cards on this wall span a single decade — 2003 to 2013. In that time, transistor counts grew by 56×, memory by 16×, and raw compute by roughly 90×. Each generation arrived with new promises, new failures, and new rivalries.</p>
+      <p>The eight cards on this wall span a decade and a half — 2003 to 2018. In that time, transistor counts grew by 216×, memory by 31×, and raw compute by roughly 400×. Each generation arrived with new promises, new failures, and new rivalries.</p>
 
       <p>But the arc doesn't stop here. The card that closes this collection — the GTX 760 — was the generation where engineers started asking a different question. Not just <em>"how fast can it render?"</em> but <em>"what else can it compute?"</em></p>
 
@@ -272,8 +272,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!device) {
     wrap.innerHTML = `
       <div class="desktop-placeholder">
-        <strong>Tap this page on your phone</strong> to see how your device compares to all six cards combined.<br><br>
-        Combined GPU performance of all six cards: <strong>~3.8 TFLOPS</strong>. A current flagship phone delivers roughly the same from a battery-powered chip.
+        <strong>Tap this page on your phone</strong> to see how your device compares to all eight cards combined.<br><br>
+        Combined GPU performance of all eight cards: <strong>~25 TFLOPS</strong>. A current flagship phone reaches a fraction of that — but from a chip the size of a fingernail.
       </div>`;
     return;
   }
@@ -286,7 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
     punchline = `Your ${device.model} has more GPU power than every card on this wall — combined — and fits in your pocket.`;
   } else {
     const pct = Math.round(combinedMultiplier * 100);
-    punchline = `Your ${device.model} reaches ${pct}% of all six cards combined. The last card alone — the 2013 GTX 760 — is the one closing the gap.`;
+    punchline = `Your ${device.model} reaches ${pct}% of all eight cards combined. The two newest cards alone account for most of that total.`;
   }
 
   wrap.innerHTML = `
