@@ -1,6 +1,6 @@
 # Artifact
 
-A shadow box art installation featuring nine graphics cards spanning 2003–2019. Each card is mounted in an 11×14 shadow box and paired with an NFC tag that opens a mobile page telling its story — and comparing it to the visitor's own phone.
+A shadow box art installation featuring eight graphics cards spanning 2003–2018. Each card is mounted in an 11×14 shadow box and paired with an NFC tag that opens a mobile page telling its story — and comparing it to the visitor's own phone.
 
 **Live site:** https://bayleyby.github.io/artifact/
 
@@ -18,9 +18,8 @@ A shadow box art installation featuring nine graphics cards spanning 2003–2019
 | 2013 | GeForce GTX 760 FTW | NVIDIA | Act V — The Compute Era |
 | 2017 | GeForce GTX 1080 Ti | NVIDIA | Act VI — Pascal's Peak |
 | 2018 | GeForce RTX 2080 | NVIDIA | Act VII — Light Learns to Bounce |
-| 2019 | Radeon RX 5700 XT | AMD | Act VIII — The Comeback |
 
-Over this era: **452× more transistors · 44× more memory · 450× more compute.**
+Over this era: **216× more transistors · 31× more memory · 400× more compute.**
 
 ### Wall layout
 
@@ -48,7 +47,6 @@ Program with [NFC Tools](https://www.wakdev.com/en/apps/nfc-tools.html) (iOS/And
 | GeForce GTX 760 FTW | `https://bayleyby.github.io/artifact/gtx760.html` |
 | GeForce GTX 1080 Ti | `https://bayleyby.github.io/artifact/gtx1080ti.html` |
 | GeForce RTX 2080 | `https://bayleyby.github.io/artifact/rtx2080.html` |
-| Radeon RX 5700 XT | `https://bayleyby.github.io/artifact/rx5700xt.html` |
 
 ---
 
