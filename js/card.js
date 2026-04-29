@@ -58,10 +58,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const ratio = device.tflops / card.tflops;
-  const phoneFaster = ratio >= 1;
-  const displayValue = phoneFaster ? Math.round(ratio) : Math.max(1, Math.round(ratio * 100));
-  const suffix = phoneFaster ? '×' : '%';
-  const multiplierLabel = phoneFaster ? '× more<br>GPU power' : '% of this<br>card\'s power';
+  const displayValue = Math.max(1, Math.round(ratio * 100));
+  const suffix = '%';
+  const multiplierLabel = '% of this<br>card\'s power';
 
   const approxNote = device.approximate
     ? ' <span style="font-size:11px;color:var(--text-dim)">(estimated)</span>' : '';
