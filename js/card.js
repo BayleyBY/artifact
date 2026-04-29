@@ -57,7 +57,12 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
-  const multiplier = Math.round(device.tflops / card.tflops);
+  const ratio = device.tflops / card.tflops;
+  const phoneFaster = ratio >= 1;
+  const displayValue = phoneFaster ? Math.round(ratio) : Math.max(1, Math.round(ratio * 100));
+  const suffix = phoneFaster ? '×' : '%';
+  const multiplierLabel = phoneFaster ? '× more<br>GPU power' : '% of this<br>card\'s power';
+
   const approxNote = device.approximate
     ? ' <span style="font-size:11px;color:var(--text-dim)">(estimated)</span>' : '';
 
@@ -66,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Power comparison sentence
   const powerLine = card.powerWatts
-    ? `<strong>${card.name}</strong> drew ${card.powerWatts}W from the wall. 
+    ? `<strong>${card.name}</strong> drew ${card.powerWatts}W from the wall.
        Your phone's entire chip uses under 5W at peak.`
     : '';
 
@@ -82,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     <div class="multiplier-row">
       <div class="multiplier-number" id="multiplier-num">—</div>
-      <div class="multiplier-label">× more<br>GPU power</div>
+      <div class="multiplier-label">${multiplierLabel}</div>
     </div>
 
     <div class="comparison-bar">
@@ -98,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>`;
 
   // Animate multiplier count-up
-  animateCounter('multiplier-num', multiplier, 900);
+  animateCounter('multiplier-num', displayValue, 900, suffix);
 
   // Animate bar (this card's share of the device's power)
   setTimeout(() => {
@@ -130,14 +135,14 @@ function estimateMatchYear(cardTflops) {
   return null;
 }
 
-function animateCounter(id, target, durationMs) {
+function animateCounter(id, target, durationMs, suffix = '×') {
   const el = document.getElementById(id);
   if (!el) return;
   const start = performance.now();
   function step(now) {
     const t = Math.min(1, (now - start) / durationMs);
     const ease = 1 - Math.pow(1 - t, 3); // ease-out cubic
-    el.textContent = Math.round(ease * target) + '×';
+    el.textContent = Math.round(ease * target) + suffix;
     if (t < 1) requestAnimationFrame(step);
   }
   requestAnimationFrame(step);
