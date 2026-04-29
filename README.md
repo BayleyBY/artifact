@@ -19,7 +19,7 @@ A shadow box art installation featuring eight graphics cards spanning 2003–201
 | 2017 | GeForce GTX 1080 Ti | NVIDIA | Act VI — Pascal's Peak |
 | 2018 | GeForce RTX 2080 | NVIDIA | Act VII — Light Learns to Bounce |
 
-Over this era: **216× more transistors · 31× more memory · 400× more compute.**
+Over this era: **216× more transistors · 32× more memory · 400× more compute.**
 
 ### Wall layout
 
