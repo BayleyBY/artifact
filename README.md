@@ -55,9 +55,9 @@ Program with [NFC Tools](https://www.wakdev.com/en/apps/nfc-tools.html) (iOS/And
 - **Photo** — picture of the actual card
 - **The story** — narrative history, including physical/visual observations about the card itself
 - **Games of the era** — 3 games played on this card, each linking to its YouTube trailer
-- **Your device comparison** — detects the visitor's phone and compares its GPU to the card with an animated multiplier
+- **Your device comparison** — detects the visitor's phone and compares its GPU to the card; shows a ×multiplier when the phone is faster, or the phone's performance as a percentage of the card when the card wins
 - **Specs** — transistors, memory, interface, DirectX, performance
-- **The big picture** — conclusion page comparing the visitor's phone to all 6 cards combined
+- **The big picture** — conclusion page comparing the visitor's phone to all 8 cards combined
 
 ---
 
@@ -82,7 +82,7 @@ All detection is client-side. No server, no analytics, no tracking.
 
 ### Print labels
 
-Open `https://bayleyby.github.io/artifact/labels.html` and print at **100% scale, no page scaling**. Two labels per page, three pages total.
+Open `https://bayleyby.github.io/artifact/labels.html` and print at **100% scale, no page scaling**. Two labels per page, four pages total.
 
 ### Label holder (3D print)
 
@@ -101,6 +101,8 @@ artifact/
 ├── hd2900xt.html
 ├── hd5750.html
 ├── gtx760.html
+├── gtx1080ti.html
+├── rtx2080.html
 ├── conclusion.html      Combined phone comparison + closing essay
 ├── labels.html          Print-ready label sheet (5"×3", 2 per page)
 ├── label-holder.scad    OpenSCAD file for 3D printed label stand
@@ -110,7 +112,9 @@ artifact/
 │   ├── 7800gs.jpg
 │   ├── hd2900xt.jpg
 │   ├── hd5750.jpg
-│   └── gtx760.jpg
+│   ├── gtx760.jpg
+│   ├── gtx1080ti.jpg
+│   └── rtx2080.jpg
 ├── css/
 │   └── style.css
 └── js/
